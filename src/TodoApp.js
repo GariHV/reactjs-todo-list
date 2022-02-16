@@ -57,7 +57,7 @@ export const TodoApp = () => {
                     >
                         <p className='text-center'>{i + 1}. {todo.desc}
                         </p>
-                        <button className='btn btn-danger'>Borrar</button>
+                        <button type='button' className='btn btn-danger'>Borrar</button>
                     </li>
                 ))
                 }

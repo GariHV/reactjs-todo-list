@@ -1,6 +1,7 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import TextInput from './components/textInput/TextInput'
-import Select from './components/select/Select.js'
+import React from 'react'
+import { Formik, Form, ErrorMessage } from 'formik'
+import TextInput from './textInput/TextInput'
+import Select from './select/Select'
 
 const validate = (values) => {
 
@@ -18,7 +19,7 @@ const validate = (values) => {
     errors.lastname = 'La descripcion es muy corta'
   }
 
-  if(values.chancho=="") {
+  if(values.chancho==="") {
     errors.radio = 'Requerido'
   }
 
@@ -53,14 +54,17 @@ const styles={
 }
 
 
-function Forms() {
+function Forms(props) {
+
+  const {onSubmit} = props
+
   return (
     <Formik
       initialValues={{ name: '', lastname: '', chancho: '', radio: '' }}
       validate={validate}
-      onSubmit={values => console.log(values)}
+      onSubmit={onSubmit}
     >
-      <Form style={styles.form}>
+      <Form style={styles.form} >
       <h1>Crear Tarea Diaria</h1>
         <TextInput name="name" label="Titulo" />
         <br />
@@ -85,4 +89,4 @@ function Forms() {
   );
 }
 
-export default App;
+export default Forms;

@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
-import { useForm } from './hooks/useForm';
+import Forms from './components/Forms';
+// import { useForm } from './hooks/useForm';
 import './styles.css'
 import { todoReducer } from './todoReducer';
 
@@ -17,22 +18,25 @@ const init = () =>{
 export const TodoApp = () => {
     const [todos, dispatch] = useReducer(todoReducer, [], init);
 
-    const [{description}, handleInputChange, reset] = useForm({
-        description:''
+    // const [{description}, reset] = useForm({
+    //     description:''
 
-    });
+    // });
 
     useEffect( () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
 
-    console.log(description);
-
+    
     const handleSubmit = (e) =>{
-        e.preventDefault();
+        console.log(e);
+        const {name, lastname, chancho, radio} = e;
         const newTodo = {
             id: new Date().getTime(),
-            desc: description,
+            title: name,
+            description: lastname,
+            dificultad: chancho,
+            repeticion: radio,
             done: false
         }
         const añadirTodo = {
@@ -40,9 +44,9 @@ export const TodoApp = () => {
             payload: newTodo
         }
         dispatch( añadirTodo );
-        reset();
+        // reset();
     }
-
+    
     return (
         <div>
             <h1>TodoApp ({todos.length})</h1>
@@ -55,7 +59,7 @@ export const TodoApp = () => {
                         key= {todo.id}
                         className='list-group-item'
                     >
-                        <p className='text-center'>{i + 1}. {todo.desc}
+                        <p className='text-center'>{i + 1}. {todo.title}
                         </p>
                         <button type='button' className='btn btn-danger'>Borrar</button>
                     </li>
@@ -66,7 +70,12 @@ export const TodoApp = () => {
                 <div className='col-5'>
                     <h4>Agregar TODO</h4>
                     <hr />
-                    <form onSubmit={handleSubmit}>
+                    {
+                    
+                    <Forms
+                    onSubmit={handleSubmit}
+                    />
+                    /* <form onSubmit={handleSubmit}>
                         <input
                             type='text'
                             name='description'
@@ -81,7 +90,7 @@ export const TodoApp = () => {
                         >
                             Agregar
                         </button>
-                    </form>
+                    </form> */}
                 </div>
             </div>
         </div>

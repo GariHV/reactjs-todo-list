@@ -1,0 +1,13 @@
+
+.general{
+    background-color: blueviolet;
+    width: 100%;
+    height: 25vh;
+}
+.general img {
+    height: 100%;
+}
+.general img:hover{
+    position: relative;
+    top:5px;
+}

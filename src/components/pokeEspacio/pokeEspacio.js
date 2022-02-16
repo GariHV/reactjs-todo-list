@@ -1,9 +1,10 @@
+import React from 'react'
 import "./pokeSpacio.css"
 
 export function PokeEspacio(){
     return (
         <div className="general">
-            <img src="pngwing.com.png" />
+            <img src="pngwing.com.png" alt=''/>
             <div className="pokeStats">
                 {/* <div class="w3-light-grey">
                     <div class="w3-grey" style="height:24px;width:25%"></div>

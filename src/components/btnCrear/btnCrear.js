@@ -1,12 +1,11 @@
-
-import { useState } from "react"
+import React from 'react'
 import "./btnCrear.css"
 
 
 
-export function BtnCrear({todo}){
+export function BtnCrear(){
 
     return(
-            <button className="btnCreate"><p> + </p></button>
+            <button type='button' className="btnCreate"><p> + </p></button>
     )
 }

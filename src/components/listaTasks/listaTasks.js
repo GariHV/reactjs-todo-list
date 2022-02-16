@@ -1,5 +1,5 @@
-import { Children } from "react";
 import "./listaTasks.css"
+import React from 'react'
 
 
 
@@ -11,9 +11,9 @@ export function ListaTasks({children}){
             <div className="cabezera">
                 <h1>titulo</h1>
                 <div>
-                    <button>todos</button>
-                    <button>por Hacer</button>
-                    <button>Hechos</button>
+                    <button type='button'>todos</button>
+                    <button type='button'>por Hacer</button>
+                    <button type='button'>Hechos</button>
                 </div>
             </div>
             <div className="conasks">

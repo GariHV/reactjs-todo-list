@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
 import Forms from './components/Forms';
+import { Task } from './components/task/task';
 // import { useForm } from './hooks/useForm';
 import './styles.css'
 import { todoReducer } from './todoReducer';
@@ -54,15 +55,11 @@ export const TodoApp = () => {
             <div className='row'>
                 <div className='col-7'>
                 <ul className='list-group list-group-flush'>
-                {todos.map( (todo, i) => (
-                    <li
-                        key= {todo.id}
-                        className='list-group-item'
-                    >
-                        <p className='text-center'>{i + 1}. {todo.title}
-                        </p>
-                        <button type='button' className='btn btn-danger'>Borrar</button>
-                    </li>
+                {todos.map( (todo) => (
+                    <Task key={todo.id}
+                    data = {todo}
+                    />
+
                 ))
                 }
             </ul>

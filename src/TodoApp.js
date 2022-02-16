@@ -9,28 +9,18 @@ import { todoReducer } from './todoReducer';
 const init = () =>{
 
     return JSON.parse(localStorage.getItem('todos')) || [];
-    // return [{
-    //     id: new Date().getTime(),
-    //     desc: 'Aprender React',
-    //     done: false
-    // }]
 }
 
 export const TodoApp = () => {
     const [todos, dispatch] = useReducer(todoReducer, [], init);
 
-    // const [{description}, reset] = useForm({
-    //     description:''
-
-    // });
-
     useEffect( () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
 
-    
+
+
     const handleSubmit = (e) =>{
-        console.log(e);
         const {name, lastname, chancho, radio} = e;
         const newTodo = {
             id: new Date().getTime(),
@@ -67,27 +57,9 @@ export const TodoApp = () => {
                 <div className='col-5'>
                     <h4>Agregar TODO</h4>
                     <hr />
-                    {
-                    
                     <Forms
                     onSubmit={handleSubmit}
                     />
-                    /* <form onSubmit={handleSubmit}>
-                        <input
-                            type='text'
-                            name='description'
-                            placeholder='Debería...'
-                            autoComplete='off'
-                            onChange={handleInputChange}
-                            value={description}
-                        />
-                        <button
-                        className='btn btn-outline-primary mt-1 btn-block'
-                        type='submit'
-                        >
-                            Agregar
-                        </button>
-                    </form> */}
                 </div>
             </div>
         </div>

@@ -7,7 +7,6 @@ import {Options} from "../Options/options"
 
 
 export function Task({data}){
-    console.log(data);
     const [OptionsV,setOptions]=useState(false)
     const modtrarOptions=()=>{
         // eslint-disable-next-line no-unneeded-ternary
@@ -27,9 +26,11 @@ export function Task({data}){
             </div>
             <div/>
             <div>
-                <button type='button'  onClick={modtrarOptions}   className='btnOptions'>...</button>
+                <button type='button' onClick={modtrarOptions}  className='btnOptions'>...</button>
                 {OptionsV ?
-            <Options />
+            <Options  
+            todo = {data}
+            />
             :null}
             </div>
             </li>

@@ -19,7 +19,7 @@ export const TodoApp = () => {
     const [todos, dispatch] = useReducer(todoReducer, [], init);
 
     const [ModalV,setModal]=useState(false)
-    const modtrarOptions=()=>{
+    const mostarModal=()=>{
         console.log(ModalV)
         // eslint-disable-next-line no-unneeded-ternary
         setModal(!ModalV ? true : false )
@@ -30,7 +30,8 @@ export const TodoApp = () => {
     }, [todos]);
 
     const handleSubmit = (e) =>{
-        const {name, lastname, chancho, radio} = e;
+        const {name, lastname, chancho, radio,edit} = e;
+        console.log(e);
         const newTodo = {
             id: new Date().getTime(),
             title: name,
@@ -44,11 +45,14 @@ export const TodoApp = () => {
             payload: newTodo
         }
         
-        const editTodo = {
+        const editarTodo = {
             type:'edit',
             payload: newTodo
         }
-        dispatch( añadirTodo );
+        if(edit===0){
+            dispatch( añadirTodo )
+        }else  dispatch( editarTodo )
+       
         // reset();
     }
 
@@ -66,6 +70,7 @@ export const TodoApp = () => {
                             <Task key={todo.id}
                             data = {todo}
                             funcDispatch = {dispatch}
+                            funcModal ={mostarModal}
                             />
                         ))
                         }
@@ -82,9 +87,9 @@ export const TodoApp = () => {
                         }
                     </ListaTasks>
                 </div>
-                <BtnCrear  func={modtrarOptions}/>
+                <BtnCrear  func={mostarModal}/>
                 {ModalV ?
-                    <Modal func ={modtrarOptions}>
+                    <Modal func ={mostarModal}>
                             <Forms
                             onSubmit={handleSubmit}
                             />

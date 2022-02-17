@@ -63,7 +63,7 @@ function Forms(props) {
 
   return (
     <Formik
-      initialValues={{ name: '', lastname: '', chancho: '', radio: '' }}
+      initialValues={{ name: '', lastname: '', chancho: '', radio: '',edit:0 }}
       validate={validate}
       onSubmit={onSubmit}
     >
@@ -71,7 +71,7 @@ function Forms(props) {
       <h1>Crear Tarea Diaria</h1>
         <TextInput name="name" label="Titulo" />
         <br />
-        <TextInput name="lastname" label="Descripcion" />
+        <TextInput name="lastname" label="Descripcion"  />
         <br />
         <Select label="Dificultad" name="chancho">
           <option value="">Seleccione...</option>
@@ -86,6 +86,7 @@ function Forms(props) {
           <option value="mensual">Mensual</option>
         </Select>
         <ErrorMessage name="radio" />
+        <input value={0} type='hidden' name="edit"/>
         <button style={styles.btn} type="submit">Enviar</button>
       </Form>
     </Formik>

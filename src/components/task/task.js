@@ -34,9 +34,9 @@ function dif(data, handleToggle) {
     }
 }
 
-export function Task({data, funcDispatch}){
+export function Task({data, funcDispatch, mostarModal}){
     const [OptionsV,setOptions]=useState(false)
-    const modtrarOptions=()=>{
+    const mostrarOptions=()=>{
         // eslint-disable-next-line no-unneeded-ternary
         setOptions(!OptionsV ? true : false )
     }
@@ -60,11 +60,13 @@ export function Task({data, funcDispatch}){
             </div>
             <div/>
             <div>
-                <button type='button' onClick={modtrarOptions}  className='btnOptions'>...</button>
+                    {/* slint-disable-next-line no-unneeded-ternary */}
+                <button type='button' onClick={mostrarOptions}  className='btnOptions'>...</button>
                 {OptionsV ?
             <Options  
             todo = {data}
             dispatchFunc = {funcDispatch}
+            modalFunc={mostarModal}
             />
             :null}
             </div>

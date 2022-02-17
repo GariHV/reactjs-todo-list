@@ -40,6 +40,7 @@ export function Task({data, funcDispatch, mostarModal}){
         // eslint-disable-next-line no-unneeded-ternary
         setOptions(!OptionsV ? true : false )
     }
+
     const handleToggle = () => {
         funcDispatch({
             type: 'toggle',

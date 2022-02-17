@@ -6,7 +6,7 @@ import {Options} from "../Options/options"
 
 
 
-export function Task({data}){
+export function Task({data, funcDispatch}){
     const [OptionsV,setOptions]=useState(false)
     const modtrarOptions=()=>{
         // eslint-disable-next-line no-unneeded-ternary
@@ -30,6 +30,7 @@ export function Task({data}){
                 {OptionsV ?
             <Options  
             todo = {data}
+            dispatchFunc = {funcDispatch}
             />
             :null}
             </div>

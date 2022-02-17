@@ -1,14 +1,14 @@
 import React from 'react'
 import "./options.css"
 
-export function Options({todo}){
+export function Options({todo, dispatchFunc}){
     const {id} = todo
     const handleDelete = () =>{
         const action = {
             type: 'delete',
             payload: {id}
         }
-        dispatch(action);
+        dispatchFunc(action);
     }
     return (
         <div className="optionsMenu">

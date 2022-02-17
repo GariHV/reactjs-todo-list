@@ -62,29 +62,28 @@ function Forms(props) {
   const idInt = parseInt(id, 10)
   let ids;
   if (idInt !== 0) {
-    console.log('a');
     ids= data.filter( todos =>{
       return todos.id === idInt
     })
     console.log(ids);
   }
   function formFill(params) {
-    if(ids){
+    if(ids[0]){
       return ids[0][params]
-    } return 'a';
+    } return '';
   }
   return (
     <Formik
 
-      initialValues={{ name: '', lastname: '', chancho: '', radio: '',edit:0 }}
+      initialValues={{ name: formFill('title'), lastname: formFill("description"), chancho: formFill('dificultad'), radio: formFill('repeticion'),edit:(ids[0])? idInt:0 }}
       validate={validate}
       onSubmit={onSubmit}
     >
       <Form style={styles.form} >
       <h1>Crear Tarea Diaria</h1>
-        <TextInput name="name" label="Titulo"  value={formFill('title')}/>
+        <TextInput name="name" label="Titulo" />
         <br />
-        <TextInput name="lastname" label="Descripcion"  value={formFill('description')}/>
+        <TextInput name="lastname" label="Descripcion" />
         <br />
         <Select label="Dificultad" name="chancho" >
           <option value="">Seleccione...</option>
@@ -99,7 +98,7 @@ function Forms(props) {
           <option value="mensual">Mensual</option>
         </Select>
         <ErrorMessage name="radio" />
-        <input value={0} type='hidden' name="edit"/>
+        <input type='hidden' name="edit"/>
         <button style={styles.btn} type="submit">Enviar</button>
       </Form>
     </Formik>

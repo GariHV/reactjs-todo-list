@@ -34,7 +34,7 @@ function dif(data, handleToggle) {
     }
 }
 
-export function Task({data, funcDispatch, mostarModal}){
+export function Task({data, funcDispatch, funcModal, idRef}){
     const [OptionsV,setOptions]=useState(false)
     const mostrarOptions=()=>{
         // eslint-disable-next-line no-unneeded-ternary
@@ -67,7 +67,8 @@ export function Task({data, funcDispatch, mostarModal}){
             <Options  
             todo = {data}
             dispatchFunc = {funcDispatch}
-            modalFunc={mostarModal}
+            modalFunc={funcModal}
+            refId = {idRef}
             />
             :null}
             </div>

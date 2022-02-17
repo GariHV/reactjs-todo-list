@@ -1,8 +1,15 @@
 import React from 'react'
 import "./options.css"
 
-export function Options({todo, dispatchFunc,mostarModal}){
+export function Options({todo, dispatchFunc, modalFunc}){
     const {id} = todo 
+    function editMix(){
+        console.log(id);
+        
+        
+        modalFunc()
+/*         refId.current.innerText = id; */
+    }
     const handleDelete = () =>{
         const action = {
             type: 'delete',
@@ -13,7 +20,7 @@ export function Options({todo, dispatchFunc,mostarModal}){
     return (
         <div className="optionsMenu">
             <button type='button' onClick={handleDelete}>borrar</button>
-            <button type='button' onClick={mostarModal}>editar</button>
+            <button type='button' onClick={editMix}>editar</button>
         </div>
     )
 

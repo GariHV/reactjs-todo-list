@@ -57,26 +57,39 @@ const styles={
 }
 
 
-function Forms(props) {
-
-  const {onSubmit} = props
-
+function Forms(props) { 
+  const {onSubmit, id, data} = props
+  const idInt = parseInt(id, 10)
+  let ids;
+  if (idInt !== 0) {
+    console.log('a');
+    ids= data.filter( todos =>{
+      return todos.id === idInt
+    })
+    console.log(ids);
+  }
+  function formFill(params) {
+    if(ids){
+      return ids[0][params]
+    } return 'a';
+  }
   return (
     <Formik
+
       initialValues={{ name: '', lastname: '', chancho: '', radio: '',edit:0 }}
       validate={validate}
       onSubmit={onSubmit}
     >
       <Form style={styles.form} >
       <h1>Crear Tarea Diaria</h1>
-        <TextInput name="name" label="Titulo" />
+        <TextInput name="name" label="Titulo"  value={formFill('title')}/>
         <br />
-        <TextInput name="lastname" label="Descripcion"  />
+        <TextInput name="lastname" label="Descripcion"  value={formFill('description')}/>
         <br />
-        <Select label="Dificultad" name="chancho">
+        <Select label="Dificultad" name="chancho" >
           <option value="">Seleccione...</option>
           <option value="facil">Facil</option>
-          <option value="intermedio">Intermedio</option>
+          <option value="intermedio" selected>Intermedio</option>
           <option value="dificil">Dificil</option>
         </Select>
         <Select label="Repetir a" name="radio">

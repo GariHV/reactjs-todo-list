@@ -6,7 +6,6 @@ import React, { useState } from 'react'
 
 export function ListaTasks({children,titulo, nTask}){
     const [valor, cambioValor] = useState(0)
-    console.log(valor);
     function taskDisplay(){
         switch (valor) {
             case 0:

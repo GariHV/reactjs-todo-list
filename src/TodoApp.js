@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer,useState } from 'react'
+import React, { useEffect, useReducer,useState, useRef } from 'react'
 import Forms from './components/Forms';
 import { Task } from './components/task/task';
 // import { useForm } from './hooks/useForm';
@@ -10,19 +10,20 @@ import {Modal} from "./components/modal/modal"
 import {BtnCrear} from "./components/btnCrear/btnCrear"
 
 
-const init = () =>{
 
+const init = () =>{
     return JSON.parse(localStorage.getItem('todos')) || [];
 }
 
 export const TodoApp = () => {
+    const refId = useRef(null);
     const [todos, dispatch] = useReducer(todoReducer, [], init);
 
     const [ModalV,setModal]=useState(false)
     const mostarModal=()=>{
-        console.log(ModalV)
         // eslint-disable-next-line no-unneeded-ternary
         setModal(!ModalV ? true : false )
+
     }
 
     useEffect( () => {
@@ -52,7 +53,6 @@ export const TodoApp = () => {
         if(edit===0){
             dispatch( añadirTodo )
         }else  dispatch( editarTodo )
-       
         // reset();
     }
 
@@ -60,6 +60,7 @@ export const TodoApp = () => {
     
     return (
         <div >
+            <div ref={refId} hidden>1645097462170</div>
             <div className='app'>
                 <PokeEspacio/>
                 <div className='generalTodo'>
@@ -71,17 +72,7 @@ export const TodoApp = () => {
                             data = {todo}
                             funcDispatch = {dispatch}
                             funcModal ={mostarModal}
-                            />
-                        ))
-                        }
-                    </ListaTasks>
-                    <ListaTasks
-                    nTask={todos.length}
-                    titulo="Tareas Pendientes"
-                    >
-                        {todos.map( (todo) => (
-                            <Task key={todo.id}
-                            data = {todo}
+                            idRef = {refId}
                             />
                         ))
                         }
@@ -92,6 +83,8 @@ export const TodoApp = () => {
                     <Modal func ={mostarModal}>
                             <Forms
                             onSubmit={handleSubmit}
+                            id = {refId.current.innerHTML}
+                            data = {todos}
                             />
                     </Modal>
                     :null}

@@ -52,9 +52,11 @@ export function Task({data}){
             </div>
             <div/>
             <div>
-                <button type='button'  onClick={modtrarOptions}   className='btnOptions'>...</button>
+                <button type='button' onClick={modtrarOptions}  className='btnOptions'>...</button>
                 {OptionsV ?
-            <Options />
+            <Options  
+            todo = {data}
+            />
             :null}
             </div>
             </li>

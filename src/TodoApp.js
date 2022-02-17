@@ -13,11 +13,6 @@ import {BtnCrear} from "./components/btnCrear/btnCrear"
 const init = () =>{
 
     return JSON.parse(localStorage.getItem('todos')) || [];
-    // return [{
-    //     id: new Date().getTime(),
-    //     desc: 'Aprender React',
-    //     done: false
-    // }]
 }
 
 export const TodoApp = () => {
@@ -35,7 +30,8 @@ export const TodoApp = () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
 
-    
+
+
     const handleSubmit = (e) =>{
         const {name, lastname, chancho, radio} = e;
         const newTodo = {

@@ -43,11 +43,16 @@ export const TodoApp = () => {
             type:'add',
             payload: newTodo
         }
+        
+        const editTodo = {
+            type:'edit',
+            payload: newTodo
+        }
         dispatch( añadirTodo );
         // reset();
     }
 
-    
+
     
     return (
         <div >

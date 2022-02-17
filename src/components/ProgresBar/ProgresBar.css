@@ -1,10 +1,10 @@
 
   .loader-bar {
-    width: 60vw;
-    height: 12vw;
+    width: 100px;
+    height: 4vw;
     display: grid;
-    grid-template-columns: repeat(3,2vw) repeat(10, 3vw 2vw) repeat(2,2vw);
-    grid-template-rows: repeat(6,2vw);
+    grid-template-columns: repeat(3,6px) repeat(10, 9px 6px) repeat(2,6px);
+    grid-template-rows: repeat(6,6px);
   }
   
   .block-border {
@@ -78,38 +78,91 @@
   .block-meter:nth-of-type(13) {
     grid-row: 3/5;
     grid-column: 12;
-    opacity: 0;
-    animation: blinky1 2s linear forwards;
+
   }
   
   .block-meter:nth-of-type(14) {
     grid-row: 3/5;
     grid-column: 14;
-    opacity: 0;
-    animation: blinky1 2s 4s linear forwards;
+
   }
   
   .block-meter:nth-of-type(15) {
     grid-row: 3/5;
     grid-column: 16;
-    opacity: 0;
-    animation: blinky1 2s 8s linear forwards;
+
   }
   
   .block-meter:nth-of-type(16) {
     grid-row: 3/5;
     grid-column: 18;
-    opacity: 0;
-    animation: blinky2 3s 14s linear infinite;
+  }
+
+  .block-meter:nth-of-type(17) {
+    grid-row: 3/5;
+    grid-column: 20;
+  }
+
+  .block-meter:nth-of-type(18) {
+    grid-row: 3/5;
+    grid-column: 22;
+  }
+
+
+
+
+  .container25 {
+    width: 180px;
+    margin: auto;
+  }
+.progress {
+    z-index: 2;
+  }
+
+
+
+  .progressbar-container {
+    position: relative;
+    width: 100%;
+    height: 25px;
+    border: 2px solid #FFF;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
   
-  @keyframes blinky1 {
-    99% {opacity: 0;}
-    100% {opacity: 1;}
+  .progressbar-complete {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    height: 100%;
+    background-color: #e20d0d;
+    border-radius: 10px;
+    animation: g 2500ms infinite ease-in-out;
+    z-index: 2;
+  }
+
+  .progressbar-liquid {
+    z-index: 1;
+    width: 70px;
+    height: 70px;
+    animation: g 2500ms infinite ease-in-out, r 3000ms infinite cubic-bezier(0.5, 0.5, 0.5, 0.5);
+    position: absolute;
+    right: -5px;
+    top: -10px;
+    background-color: #e20d0d;
+    border-radius: 40%;
+  }
+
+  @keyframes g {
+    0% { background-color: #e20d0d; }
+    50% { background-color: #e25353; }
+    100% { background-color: #e20d0d;; }
   }
   
-  @keyframes blinky2 {
-    49% {opacity: 0;}
-    50% {opacity: 0;}
-    90% {opacity: 0;}
+  @keyframes r {
+    from { transform: rotate(0deg); }
+    from { transform: rotate(360deg); }
   }

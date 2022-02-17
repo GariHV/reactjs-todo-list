@@ -4,7 +4,33 @@ import { useState } from "react"
 import "./task.css"
 import {Options} from "../Options/options"
 
+function dif(dificultad){
+    switch(dificultad){
+        case "facil":
+        return (
+        <div className='check' style={{backgroundColor: "green"}}>
+            <input type="checkbox"  />
+        </div>)
 
+        case "intermedio":
+        return (
+        <div className='check' style={{backgroundColor: "yellow"}}>
+            <input type="checkbox"  />
+        </div>)
+
+        case "dificil":
+        return (
+        <div className='check' style={{backgroundColor: "red"}}>
+            <input type="checkbox"  />
+        </div>)
+
+        default:
+            return (
+        <div className='check' style={{backgroundColor: "grey"}}>
+            <input type="checkbox"  />
+        </div>)
+    }
+}
 
 export function Task({data, funcDispatch}){
     const [OptionsV,setOptions]=useState(false)
@@ -17,9 +43,9 @@ export function Task({data, funcDispatch}){
                 key= {data.id}
                 className='lista'
             >
-            <div className='check' >
-                <input type="checkbox"  />
-            </div>
+            {
+                dif(data.dificultad)
+            }
             <div className='textTask'>
                 <h2 className='text-center'> {data.title}</h2>
                 <p className='text-center'> {data.description}</p>

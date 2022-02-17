@@ -1,9 +1,13 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useEffect, useReducer,useState } from 'react'
 import Forms from './components/Forms';
 import { Task } from './components/task/task';
 // import { useForm } from './hooks/useForm';
 import './styles.css'
 import { todoReducer } from './todoReducer';
+import {ListaTasks} from "./components/listaTasks/listaTasks"
+import {PokeEspacio} from "./components/pokeEspacio/pokeEspacio"
+import {Modal} from "./components/modal/modal"
+import {BtnCrear} from "./components/btnCrear/btnCrear"
 
 
 const init = () =>{
@@ -13,6 +17,14 @@ const init = () =>{
 
 export const TodoApp = () => {
     const [todos, dispatch] = useReducer(todoReducer, [], init);
+
+    const [ModalV,setModal]=useState(false)
+    const modtrarOptions=()=>{
+        console.log(ModalV)
+        // eslint-disable-next-line no-unneeded-ternary
+        setModal(!ModalV ? true : false )
+    }
+
 
     useEffect( () => {
         localStorage.setItem('todos', JSON.stringify(todos))
@@ -39,29 +51,42 @@ export const TodoApp = () => {
     }
     
     return (
-        <div>
-            <h1>TodoApp ({todos.length})</h1>
-            <hr />
-            <div className='row'>
-                <div className='col-7'>
-                <ul className='list-group list-group-flush'>
-                {todos.map( (todo) => (
-                    <Task key={todo.id}
-                    data = {todo}
-                    funcDispatch = {dispatch}
-                    />
+        <div >
+            <div className='app'>
+                <PokeEspacio/>
+                <div className='generalTodo'>
+                    <ListaTasks
+                    nTask={todos.length}
+                    titulo="Tareas diarias">
+                        {todos.map( (todo) => (
+                            <Task key={todo.id}
+                            data = {todo}
+                            />
 
-                ))
-                }
-            </ul>
+                        ))
+                        }
+                    </ListaTasks>
+                    <ListaTasks
+                    nTask={todos.length}
+                    titulo="Tareas Pendientes"
+                    >
+                        {todos.map( (todo) => (
+                            <Task key={todo.id}
+                            data = {todo}
+                            />
+
+                        ))
+                        }
+                    </ListaTasks>
                 </div>
-                <div className='col-5'>
-                    <h4>Agregar TODO</h4>
-                    <hr />
-                    <Forms
-                    onSubmit={handleSubmit}
-                    />
-                </div>
+                <BtnCrear  func={modtrarOptions}/>
+                {ModalV ?
+                    <Modal func ={modtrarOptions}>
+                            <Forms
+                            onSubmit={handleSubmit}
+                            />
+                    </Modal>
+                    :null}
             </div>
         </div>
     )

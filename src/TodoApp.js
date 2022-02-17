@@ -61,6 +61,7 @@ export const TodoApp = () => {
                         {todos.map( (todo) => (
                             <Task key={todo.id}
                             data = {todo}
+                            funcDispatch = {dispatch}
                             />
 
                         ))

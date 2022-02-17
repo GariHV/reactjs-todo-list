@@ -2,11 +2,11 @@ import React from 'react'
 import "./options.css"
 
 export function Options({todo, dispatchFunc}){
-    const {id} = todo
+    const {id} = todo 
     const handleDelete = () =>{
         const action = {
             type: 'delete',
-            payload: {id}
+            payload: id
         }
         dispatchFunc(action);
     }
@@ -16,4 +16,5 @@ export function Options({todo, dispatchFunc}){
             <button type='button'>editar</button>
         </div>
     )
+
 }

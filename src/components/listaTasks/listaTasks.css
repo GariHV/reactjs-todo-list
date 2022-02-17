@@ -1,6 +1,7 @@
 
 .cuerpo{
     width: 50%;
+    height: 75vh;
     padding: 10px;
     margin: auto;
     display: flex;
@@ -26,6 +27,7 @@
     border-bottom: 2px solid blueviolet;
 }
 .conasks{
-    margin: auto;
+    /* margin: auto; */
     background-color: rgb(224, 224, 224);
+    
 }

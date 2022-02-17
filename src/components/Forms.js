@@ -3,6 +3,7 @@ import { Formik, Form, ErrorMessage } from 'formik'
 import TextInput from './textInput/TextInput'
 import Select from './select/Select'
 
+
 const validate = (values) => {
 
   const errors = {}
@@ -39,6 +40,8 @@ const styles={
       alignItems:"center",
       padding: "20px",
       borderRadius:"10px",
+      color:"white",
+      maxHeight:"70%",
     },
     btn:{
       transition:" all 0.5s ease",

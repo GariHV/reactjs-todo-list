@@ -1,14 +1,6 @@
-
-
 body{
-    padding: 50px;
+    margin: 0;
 }
-
-p{
-    cursor: pointer;
-    margin: 0px;
-}
-
 .btn{
     width: 18% !important;
 }
@@ -21,4 +13,14 @@ p{
 
 .complete{
     text-decoration: line-through;
+}
+
+.generalTodo{
+    display: flex;
+
+}
+.app{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }

@@ -3,9 +3,9 @@ import "./btnCrear.css"
 
 
 
-export function BtnCrear(){
+export function BtnCrear({func,...props}){
 
     return(
-            <button type='button' className="btnCreate"><p> + </p></button>
+            <button type='button' className="btnCreate" onClick={func}  {...props}><p> + </p></button>
     )
 }

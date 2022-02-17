@@ -1,5 +1,8 @@
 
 .btnCreate{
+    position: relative;
+    bottom:20vh;
+    left:42%;
     width: 80px;
     height: 80px;
     background: linear-gradient(red 48%,black 48% 53%, rgb(253, 253, 253) 53% 100%);
@@ -11,7 +14,7 @@
     font-weight: bolder;
     color: rgb(37, 37, 37);
     text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-    transition: background 1s ease-out; 
+    cursor: pointer;
 }
 .btnCreate p{
     border-radius: 100px;

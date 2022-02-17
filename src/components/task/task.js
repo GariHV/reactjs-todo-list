@@ -4,30 +4,32 @@ import { useState } from "react"
 import "./task.css"
 import {Options} from "../Options/options"
 
-function dif(dificultad){
+function dif(data, handleToggle) {
+    const {dificultad, done} = data
     switch(dificultad){
         case "facil":
         return (
         <div className='check' style={{backgroundColor: "green"}}>
-            <input type="checkbox"  />
+            <input type="checkbox"  onChange={handleToggle} value={done}/>
         </div>)
 
         case "intermedio":
         return (
         <div className='check' style={{backgroundColor: "yellow"}}>
-            <input type="checkbox"  />
+            < input type = "checkbox"
+            onChange = {handleToggle} checked={done}/>
         </div>)
 
         case "dificil":
         return (
         <div className='check' style={{backgroundColor: "red"}}>
-            <input type="checkbox"  />
+            <input type="checkbox"  value={done}/>
         </div>)
 
         default:
             return (
         <div className='check' style={{backgroundColor: "grey"}}>
-            <input type="checkbox"  />
+            <input type="checkbox"  value={done}/>
         </div>)
     }
 }
@@ -38,13 +40,19 @@ export function Task({data, funcDispatch}){
         // eslint-disable-next-line no-unneeded-ternary
         setOptions(!OptionsV ? true : false )
     }
+    const handleToggle = () => {
+        funcDispatch({
+            type: 'toggle',
+            payload: data.id
+        })
+    }
     return(
             <li
                 key= {data.id}
                 className='lista'
             >
             {
-                dif(data.dificultad)
+                dif(data, handleToggle)
             }
             <div className='textTask'>
                 <h2 className='text-center'> {data.title}</h2>

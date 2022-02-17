@@ -25,12 +25,9 @@ export const TodoApp = () => {
         setModal(!ModalV ? true : false )
     }
 
-
     useEffect( () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
-
-
 
     const handleSubmit = (e) =>{
         const {name, lastname, chancho, radio} = e;
@@ -49,6 +46,8 @@ export const TodoApp = () => {
         dispatch( añadirTodo );
         // reset();
     }
+
+    
     
     return (
         <div >
@@ -63,7 +62,6 @@ export const TodoApp = () => {
                             data = {todo}
                             funcDispatch = {dispatch}
                             />
-
                         ))
                         }
                     </ListaTasks>
@@ -75,7 +73,6 @@ export const TodoApp = () => {
                             <Task key={todo.id}
                             data = {todo}
                             />
-
                         ))
                         }
                     </ListaTasks>

@@ -31,3 +31,7 @@
     background-color: rgb(224, 224, 224);
     
 }
+
+.marcado {
+    border-bottom: 2px solid blueviolet !important;
+}

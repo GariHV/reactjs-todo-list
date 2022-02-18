@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer,useState, useRef } from 'react'
+import { Switch, Route, Link } from 'react-router-dom';
 import Forms from './components/Forms';
 import { Task } from './components/task/task';
 // import { useForm } from './hooks/useForm';
@@ -8,6 +9,7 @@ import {ListaTasks} from "./components/listaTasks/listaTasks"
 import {PokeEspacio} from "./components/pokeEspacio/pokeEspacio"
 import {Modal} from "./components/modal/modal"
 import {BtnCrear} from "./components/btnCrear/btnCrear"
+import { ShopBackground } from './components/shopBackground/ShopBackground';
 
 
 
@@ -62,43 +64,65 @@ export const TodoApp = () => {
             console.log(editarTodo)
             // dispatch( editarTodo )
         }
-
         // reset();
     }
-
-
     
     return (
         <div >
-            <div ref={refId} hidden>1645119652987</div>
-            <div className='app'>
-                <PokeEspacio/>
-                <div className='generalTodo'>
-                    <ListaTasks
-                    nTask={todos.length}
-                    titulo="Tareas diarias">
-                        {todos.map( (todo) => (
-                            <Task key={todo.id}
-                            data = {todo}
-                            funcDispatch = {dispatch}
-                            funcModal ={mostarModal}
-                            idRef = {refId}
-                            />
-                        ))
-                        }
-                    </ListaTasks>
-                </div>
-                <BtnCrear  func={mostarModal}/>
-                {ModalV ?
-                    <Modal func ={mostarModal}>
-                            <Forms
-                            onSubmit={handleSubmit}
-                            id = {refId.current.innerHTML}
-                            data = {todos}
-                            />
-                    </Modal>
-                    :null}
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to='/'>
+                            Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to='/tienda'>
+                            Tienda
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
             </div>
+            <Switch>
+                <Route path='/tienda'>
+                    <div ref={refId} hidden>1645097462170</div>
+                        <PokeEspacio/>
+                        <ShopBackground/>
+                </Route>
+                <Route path='/'>
+                    <div ref={refId} hidden>1645097462170</div>
+                    <div className='app'>
+                        <PokeEspacio/>
+                        <div className='generalTodo'>
+                            <ListaTasks
+                            nTask={todos.length}
+                            titulo="Tareas diarias">
+                                {todos.map( (todo) => (
+                                    <Task key={todo.id}
+                                    data = {todo}
+                                    funcDispatch = {dispatch}
+                                    funcModal ={mostarModal}
+                                    idRef = {refId}
+                                    />
+                                ))
+                                }
+                            </ListaTasks>
+                        </div>
+                        <BtnCrear  func={mostarModal}/>
+                        {ModalV ?
+                            <Modal func ={mostarModal}>
+                                    <Forms
+                                    onSubmit={handleSubmit}
+                                    id = {refId.current.innerHTML}
+                                    data = {todos}
+                                    />
+                            </Modal>
+                            :null}
+                    </div>
+                </Route>
+            </Switch>
         </div>
     )
 }

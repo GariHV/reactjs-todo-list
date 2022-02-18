@@ -2,9 +2,16 @@ import React from 'react'
 import "./ProgresBar.css"
 
 
-export function ProgresBar(){
+export function ProgresBar({exp}){
+  console.log(exp);
+  const fullExp = [];
+  function setExp(v){
+    for (let i = 0; i < v; i++) {
+      fullExp.push(<div className="block-meter"/>)
+    }
+  }
     return(
-        <div className="loader-bar">
+      <div className="loader-bar">
         <div className="block-border"/>
         <div className="block-border"/>
         <div className="block-border"/>
@@ -13,16 +20,8 @@ export function ProgresBar(){
         <div className="block-border"/>
         <div className="block-border"/>
         <div className="block-border"/>
-        <div className="block-meter"/>
-        <div className="block-meter"/>
-        <div className="block-meter"/>
-        <div className="block-meter"/>
-        <div className="block-meter"/>
-        <div className="block-meter"/>
-        <div className="block-meter"/>
-        <div className="block-meter"/>
-        <div className="block-meter"/>
-        <div className="block-meter"/>
+        {setExp(1)}
+        {fullExp}
       </div>
     )
 }

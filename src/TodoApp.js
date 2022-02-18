@@ -20,18 +20,14 @@ const init = () =>{
 export const TodoApp = () => {
     const refId = useRef(null);
     const [todos, dispatch] = useReducer(todoReducer, [], init);
-
     const [ModalV,setModal]=useState(false)
     const mostarModal=()=>{
         // eslint-disable-next-line no-unneeded-ternary
         setModal(!ModalV ? true : false )
-
     }
-
     useEffect( () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
-
     const handleSubmit = (e) =>{
         const {name, lastname, chancho, radio,edit} = e;
         if(edit===0){  
@@ -62,7 +58,8 @@ export const TodoApp = () => {
                 payload: newTodo
             }
             console.log(editarTodo)
-            // dispatch( editarTodo )
+            dispatch( editarTodo )
+            console.log(todos);
         }
         // reset();
     }
@@ -87,12 +84,11 @@ export const TodoApp = () => {
             </div>
             <Switch>
                 <Route path='/tienda'>
-                    <div ref={refId} hidden>1645097462170</div>
                         <PokeEspacio/>
                         <ShopBackground/>
                 </Route>
                 <Route path='/'>
-                    <div ref={refId} hidden>1645097462170</div>
+                    <div ref={refId} hidden>0</div>
                     <div className='app'>
                         <PokeEspacio/>
                         <div className='generalTodo'>

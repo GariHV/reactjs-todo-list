@@ -1,14 +1,14 @@
 import React from 'react'
 import "./options.css"
 
-export function Options({todo, dispatchFunc, modalFunc}){
+export function Options({todo, dispatchFunc, modalFunc, refId}){
     const {id} = todo 
     function editMix(){
         console.log(id);
-        
+
         
         modalFunc()
-/*         refId.current.innerText = id; */
+        refId.current.innerText = id;
     }
     const handleDelete = () =>{
         const action = {

@@ -60,7 +60,7 @@ const styles={
 function Forms(props) { 
   const {onSubmit, id, data} = props
   const idInt = parseInt(id, 10)
-  let ids;
+  let ids = 0;
   if (idInt !== 0) {
     ids= data.filter( todos =>{
       return todos.id === idInt
@@ -75,7 +75,7 @@ function Forms(props) {
   return (
     <Formik
 
-      initialValues={{ name: formFill('title'), lastname: formFill("description"), chancho: formFill('dificultad'), radio: formFill('repeticion'),edit:(ids[0])? idInt:0 }}
+      initialValues={{ name: formFill('title'), lastname: formFill("description"), chancho: formFill('dificultad'), radio: formFill('repeticion'),edit:(ids===0)? 0:idInt }}
       validate={validate}
       onSubmit={onSubmit}
     >

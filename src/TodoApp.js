@@ -17,15 +17,13 @@ import { ShopBackground } from './components/shopBackground/ShopBackground';
 const init = () =>{
     return JSON.parse(localStorage.getItem('todos')) || [];
 }
-const inicio = () =>{
-    return JSON.parse(localStorage.getItem('estado')) || {"oro":0,"exp":0,"vida":100,"lvl":0,poke:""};
-}
+
 
 export const TodoApp = () => {
     const refId = useRef(null);
     const [todos, dispatch] = useReducer(todoReducer, [],init);
 
-    const [estados, dispatchStats] = useReducer(estadoReduce, [], inicio);
+    const [estado, setestado] = useState({"oro":0,"exp":0,"vida":100,"lvl":0,poke:"","infoPoke":{}});
 
     const [ModalV,setModal]=useState(false)
     const mostarModal=()=>{
@@ -58,8 +56,8 @@ export const TodoApp = () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
     useEffect( () => {
-        localStorage.setItem('estado', JSON.stringify(todos))
-    }, [estados]);
+        localStorage.setItem('estado', JSON.stringify(estado))
+    }, [estado]);
     const handleSubmit = (e) =>{
         const {name, lastname, chancho, radio,edit} = e;
         if(edit===0){  
@@ -150,3 +148,39 @@ export const TodoApp = () => {
         </div>
     )
 }
+
+
+function pokedex(){
+    return fetch('../public/evolucines.json')
+  .then(response => response.json())
+  .then(data => console.log(data));
+}
+
+
+function revisarPokemon(state){
+    if(state["exp"]>= 10){
+        if(state["lvl"]===0){
+            npokemon=Math.floor(Math.random() * (151 - 1)) + 1;
+            const pokedex=pokedex()
+            state["infoPoke"]=pokedex[npokemon]
+            state["poke"]=state["infoPoke"][1]
+        }
+        else if(state["lvl"]>0){
+            if(state["poke"]===state["infoPoke"]["1"]){
+                if(Object.keys(state["infoPoke"]).length>2){
+                    if(state["lvl"]>=state["infoPoke"]["lvl1"]){
+                        state["poke"]=state["infoPoke"]["2"]
+                    }
+                }
+            }
+            if(state["poke"]===state["infoPoke"]["2"]){
+                if(Object.keys(state["infoPoke"]).length>4){
+                    if(state["lvl"]>=state["infoPoke"]["lvl2"]){
+                        state["poke"]=state["infoPoke"]["3"]
+                    }
+                }
+            }
+        }
+    }
+}
+

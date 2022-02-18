@@ -20,7 +20,7 @@ export function ProgresBar({exp}){
         <div className="block-border"/>
         <div className="block-border"/>
         <div className="block-border"/>
-        {setExp(1)}
+        {setExp(exp)}
         {fullExp}
       </div>
     )

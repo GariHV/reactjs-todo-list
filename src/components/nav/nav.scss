@@ -1,0 +1,20 @@
+.NavBar{
+    background-color: rgb(75, 31, 77);
+    border-bottom: 1px solid rgb(158, 158, 158);
+    ul{
+        margin: 0 !important;
+        display: flex;
+        li{
+            list-style: none;
+            padding: 10px 20px;
+            
+            a{
+                text-decoration: none;
+                color:white;
+            }
+        }
+        li:hover{
+            box-shadow: 1px 0px 3px rgb(221, 221, 221);
+        }
+    }
+}

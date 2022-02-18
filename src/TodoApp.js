@@ -1,8 +1,7 @@
 import React, { useEffect, useReducer,useState, useRef } from 'react'
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Forms from './components/Forms';
 import { Task } from './components/task/task';
-// import { useForm } from './hooks/useForm';
 import './styles.css'
 import { todoReducer } from './todoReducer';
 import { estadoReduce } from './estadoReduce';
@@ -11,6 +10,7 @@ import {PokeEspacio} from "./components/pokeEspacio/pokeEspacio"
 import {Modal} from "./components/modal/modal"
 import {BtnCrear} from "./components/btnCrear/btnCrear"
 import { ShopBackground } from './components/shopBackground/ShopBackground';
+import {Nav} from "./components/nav/nav"
 
 
 
@@ -23,7 +23,7 @@ export const TodoApp = () => {
     const refId = useRef(null);
     const [todos, dispatch] = useReducer(todoReducer, [],init);
 
-    const [estado, setestado] = useState({"oro":0,"exp":0,"vida":100,"lvl":0,poke:"","infoPoke":{}});
+    const [estado, setestado] = useState({"oro":0,"exp":0,"vida":100,"lvl":0,poke:"Huevo","infoPoke":{}});
 
     const [ModalV,setModal]=useState(false)
     const mostarModal=()=>{
@@ -98,22 +98,8 @@ export const TodoApp = () => {
     
     return (
         <div >
-            <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to='/'>
-                            Home
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to='/tienda'>
-                            Tienda
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+
+            <Nav/>
             <Switch>
                 <Route path='/tienda'>
                         <PokeEspacio/>
@@ -184,3 +170,17 @@ function revisarPokemon(state){
     }
 }
 
+
+function finDia(){
+    const d= new Date()
+    const hour= d.getHours()
+    const tasks=JSON.parse(localStorage.getItem('todos'))
+    if(hour===0){
+        for (const task of tasks) {
+            if(task.done===false){
+                task.dificultad+"-false"
+            }
+            task.done=false
+        }
+    }
+}

@@ -62,6 +62,8 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "prefer-arrow-callback":"off",
+    "no-param-reassign":"off",
     "no-unused-vars": "off",
     "no-param-reassign": "off",
     "no-plusplus": "off",

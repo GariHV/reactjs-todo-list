@@ -5,6 +5,7 @@ import { Task } from './components/task/task';
 // import { useForm } from './hooks/useForm';
 import './styles.css'
 import { todoReducer } from './todoReducer';
+import { estadoReduce } from './estadoReduce';
 import {ListaTasks} from "./components/listaTasks/listaTasks"
 import {PokeEspacio} from "./components/pokeEspacio/pokeEspacio"
 import {Modal} from "./components/modal/modal"
@@ -16,24 +17,49 @@ import { ShopBackground } from './components/shopBackground/ShopBackground';
 const init = () =>{
     return JSON.parse(localStorage.getItem('todos')) || [];
 }
+const inicio = () =>{
+    return JSON.parse(localStorage.getItem('estado')) || {"oro":0,"exp":0,"vida":100,"lvl":0,poke:""};
+}
 
 export const TodoApp = () => {
     const refId = useRef(null);
-    const [todos, dispatch] = useReducer(todoReducer, [], init);
+    const [todos, dispatch] = useReducer(todoReducer, [],init);
+
+    const [estados, dispatchStats] = useReducer(estadoReduce, [], inicio);
+
     const [ModalV,setModal]=useState(false)
     const mostarModal=()=>{
         // eslint-disable-next-line no-unneeded-ternary
         setModal(!ModalV ? true : false )
     }
     const resetearModal =()=>{
-        console.log("A")
         mostarModal()
         refId.current.innerText = 0;
     }
+    const impTask=()=>{
+        todos.sort(function(x, y) {
+            return Number(x.done) - Number(y.done);
+        })
 
+        const to = todos.map( (todo) => (
+            <Task key={todo.id}
+            data = {todo}
+            funcDispatch = {dispatch}
+            funcModal ={mostarModal}
+            idRef = {refId}
+            />
+        ))
+        
+        
+        // console.log(to)
+        return to
+    }
     useEffect( () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
+    useEffect( () => {
+        localStorage.setItem('estado', JSON.stringify(todos))
+    }, [estados]);
     const handleSubmit = (e) =>{
         const {name, lastname, chancho, radio,edit} = e;
         if(edit===0){  
@@ -102,14 +128,8 @@ export const TodoApp = () => {
                             <ListaTasks
                             nTask={todos.length}
                             titulo="Tareas diarias">
-                                {todos.map( (todo) => (
-                                    <Task key={todo.id}
-                                    data = {todo}
-                                    funcDispatch = {dispatch}
-                                    funcModal ={mostarModal}
-                                    idRef = {refId}
-                                    />
-                                ))
+                                {
+                                    impTask()
                                 }
                             </ListaTasks>
                         </div>

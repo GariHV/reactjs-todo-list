@@ -3,18 +3,19 @@ import { ProgresBar, ProgrerLive} from '../ProgresBar/ProgresBar'
 import "./pokeSpacio.css"
 
 export function PokeEspacio(){
-    const experience = useRef(null);
+    let estado = JSON.parse(localStorage.getItem('estado'))
     return (
         <div className="general">
             <div className='pokeInfo'>
-                <h1 >Huevo</h1>
+                <h1 >{estado["poke"]}</h1>
+                <h2 >{estado["lvl"]}</h2>
             </div>
                 <img src="pngwing.com.png" alt=''/>
                 <div className="pokeStats">
                     <h3>Experience</h3>
-                    <ProgresBar exp={experience}/>
+                    <ProgresBar exp={estado["exp"]}/>
                     <h3>Lived</h3>
-                <ProgrerLive progress="100" key="progres" />
+                <ProgrerLive progress={estado["vida"]} key="progres" />
                 </div>
         </div>
     )

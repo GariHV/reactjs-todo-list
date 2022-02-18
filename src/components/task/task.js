@@ -3,27 +3,28 @@ import React from 'react'
 import { useState } from "react"
 import "./task.css"
 import {Options} from "../Options/options"
+/* import {estadoReduce} from "" */
 
-function dif(data, handleToggle) {
+function dif(data, mixChecked) {
     const {dificultad, done} = data
     switch(dificultad){
         case "facil":
         return (
         <div className='check' style={{backgroundColor: "green"}}>
-            <input type="checkbox"  onChange={handleToggle} value={done}/>
+            <input type="checkbox"  onChange={mixChecked} checked={done}/>
         </div>)
 
         case "intermedio":
         return (
         <div className='check' style={{backgroundColor: "yellow"}}>
-            < input type = "checkbox"
-            onChange = {handleToggle} checked={done}/>
+            <input type = "checkbox"
+            onChange = {mixChecked} checked={done}/>
         </div>)
 
         case "dificil":
         return (
         <div className='check' style={{backgroundColor: "red"}}>
-            <input type="checkbox"  value={done}/>
+            <input type="checkbox" onChange = {mixChecked}  checked={done}/>
         </div>)
 
         default:
@@ -41,19 +42,31 @@ export function Task({data, funcDispatch, funcModal, idRef}){
         setOptions(!OptionsV ? true : false )
     }
 
-    const handleToggle = () => {
+    function checkIfChecked  ()  {
+
+        const condition =  `${data.dificultad}-${!data.done}`;
+        console.log(condition);
+        
+    }
+
+    function handleToggle () {
         funcDispatch({
             type: 'toggle',
             payload: data.id
         })
     }
+    const mixChecked = () => {
+        handleToggle();
+        checkIfChecked();
+    }
+
     return(
             <li
                 key= {data.id}
                 className='lista'
             >
             {
-                dif(data, handleToggle)
+                dif(data, mixChecked)
             }
             <div className='textTask'>
                 <h2 className='text-center'> {data.title}</h2>

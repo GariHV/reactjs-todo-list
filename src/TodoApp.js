@@ -9,6 +9,7 @@ import {ListaTasks} from "./components/listaTasks/listaTasks"
 import {PokeEspacio} from "./components/pokeEspacio/pokeEspacio"
 import {Modal} from "./components/modal/modal"
 import {BtnCrear} from "./components/btnCrear/btnCrear"
+import { ShopBackground } from './components/shopBackground/ShopBackground';
 
 
 
@@ -63,11 +64,8 @@ export const TodoApp = () => {
             console.log(editarTodo)
             // dispatch( editarTodo )
         }
-
         // reset();
     }
-
-
     
     return (
         <div >
@@ -91,6 +89,7 @@ export const TodoApp = () => {
                 <Route path='/tienda'>
                     <div ref={refId} hidden>1645097462170</div>
                         <PokeEspacio/>
+                        <ShopBackground/>
                 </Route>
                 <Route path='/'>
                     <div ref={refId} hidden>1645097462170</div>

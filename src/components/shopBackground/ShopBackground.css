@@ -1,0 +1,8 @@
+.background-container{
+    width: 100%;
+    height: 35vh;
+}
+.stone-background{
+    height: 100%;
+    background-image: url('../../img/market_banner_npc.png'), url('../../img/market_background.png');
+}

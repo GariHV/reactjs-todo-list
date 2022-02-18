@@ -59,10 +59,10 @@ export const TodoApp = () => {
             }
             console.log(editarTodo)
             dispatch( editarTodo )
-            console.log(todos);
         }
         // reset();
     }
+    console.log(todos);
     
     return (
         <div >
@@ -95,6 +95,7 @@ export const TodoApp = () => {
                             <ListaTasks
                             nTask={todos.length}
                             titulo="Tareas diarias">
+
                                 {todos.map( (todo) => (
                                     <Task key={todo.id}
                                     data = {todo}

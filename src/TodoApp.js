@@ -33,27 +33,37 @@ export const TodoApp = () => {
 
     const handleSubmit = (e) =>{
         const {name, lastname, chancho, radio,edit} = e;
-        console.log(e);
-        const newTodo = {
-            id: new Date().getTime(),
-            title: name,
-            description: lastname,
-            dificultad: chancho,
-            repeticion: radio,
-            done: false
-        }
-        const añadirTodo = {
-            type:'add',
-            payload: newTodo
-        }
-        
-        const editarTodo = {
-            type:'edit',
-            payload: newTodo
-        }
-        if(edit===0){
+        if(edit===0){  
+            const newTodo = {
+                id: new Date().getTime(),
+                title: name,
+                description: lastname,
+                dificultad: chancho,
+                repeticion: radio,
+                done: false
+            }
+            const añadirTodo = {
+                type:'add',
+                payload: newTodo
+            }
             dispatch( añadirTodo )
-        }else  dispatch( editarTodo )
+        }else {
+            const newTodo = {
+                id: edit,
+                title: name,
+                description: lastname,
+                dificultad: chancho,
+                repeticion: radio,
+                done: false
+            }
+            const editarTodo = {
+                type:'edit',
+                payload: newTodo
+            }
+            console.log(editarTodo)
+            // dispatch( editarTodo )
+        }
+
         // reset();
     }
 

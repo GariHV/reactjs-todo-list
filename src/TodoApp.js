@@ -18,12 +18,16 @@ const init = () =>{
     return JSON.parse(localStorage.getItem('todos')) || [];
 }
 
+const init2 = () => {
+    return JSON.parse(localStorage.getItem('estado')) || [{"oro":0,"exp":0,"vida":100,"lvl":0,poke:"","infoPoke":{}}];
+}
+
 
 export const TodoApp = () => {
     const refId = useRef(null);
     const [todos, dispatch] = useReducer(todoReducer, [],init);
 
-    const [estado, setestado] = useState({"oro":0,"exp":0,"vida":100,"lvl":0,poke:"","infoPoke":{}});
+    const [estado, setestado] = useReducer(estadoReduce, [], init2);
 
     const [ModalV,setModal]=useState(false)
     const mostarModal=()=>{
@@ -42,6 +46,7 @@ export const TodoApp = () => {
         const to = todos.map( (todo) => (
             <Task key={todo.id}
             data = {todo}
+            estadoActual = {setestado}
             funcDispatch = {dispatch}
             funcModal ={mostarModal}
             idRef = {refId}
@@ -56,6 +61,7 @@ export const TodoApp = () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
     useEffect( () => {
+        console.log('guardado');
         localStorage.setItem('estado', JSON.stringify(estado))
     }, [estado]);
     const handleSubmit = (e) =>{

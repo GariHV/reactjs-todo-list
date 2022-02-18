@@ -65,7 +65,6 @@ function Forms(props) {
     ids= data.filter( todos =>{
       return todos.id === idInt
     })
-    console.log(ids);
   }
   function formFill(params) {
     if(ids[0]){

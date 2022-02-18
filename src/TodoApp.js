@@ -27,6 +27,11 @@ export const TodoApp = () => {
         setModal(!ModalV ? true : false )
 
     }
+    const resetearModal =()=>{
+        console.log("A")
+        mostarModal()
+        refId.current.innerText = 0;
+    }
 
     useEffect( () => {
         localStorage.setItem('todos', JSON.stringify(todos))
@@ -48,6 +53,7 @@ export const TodoApp = () => {
                 payload: newTodo
             }
             dispatch( añadirTodo )
+            resetearModal()
         }else {
             const newTodo = {
                 id: edit,
@@ -63,6 +69,7 @@ export const TodoApp = () => {
             }
             console.log(editarTodo)
             // dispatch( editarTodo )
+            resetearModal()
         }
         // reset();
     }

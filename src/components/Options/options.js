@@ -8,7 +8,7 @@ export function Options({todo, dispatchFunc, modalFunc}){
         
         
         modalFunc()
-/*         refId.current.innerText = id; */
+        
     }
     const handleDelete = () =>{
         const action = {

@@ -17,15 +17,13 @@ import { ShopBackground } from './components/shopBackground/ShopBackground';
 const init = () =>{
     return JSON.parse(localStorage.getItem('todos')) || [];
 }
-const inicio = () =>{
-    return JSON.parse(localStorage.getItem('estado')) || {"oro":0,"exp":0,"vida":100,"lvl":0,poke:""};
-}
+
 
 export const TodoApp = () => {
     const refId = useRef(null);
     const [todos, dispatch] = useReducer(todoReducer, [],init);
 
-    const [estados, dispatchStats] = useReducer(estadoReduce, [], inicio);
+    const [estado, setestado] = useState({"oro":0,"exp":0,"vida":100,"lvl":0,poke:"","infoPoke":{}});
 
     const [ModalV,setModal]=useState(false)
     const mostarModal=()=>{
@@ -58,8 +56,8 @@ export const TodoApp = () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
     useEffect( () => {
-        localStorage.setItem('estado', JSON.stringify(todos))
-    }, [estados]);
+        localStorage.setItem('estado', JSON.stringify(estado))
+    }, [estado]);
     const handleSubmit = (e) =>{
         const {name, lastname, chancho, radio,edit} = e;
         if(edit===0){  

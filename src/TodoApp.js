@@ -89,11 +89,12 @@ export const TodoApp = () => {
                 payload: newTodo
             }
             console.log(editarTodo)
-            // dispatch( editarTodo )
+            dispatch( editarTodo )
             resetearModal()
         }
         // reset();
     }
+    console.log(todos);
     
     return (
         <div >

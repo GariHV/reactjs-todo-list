@@ -19,7 +19,7 @@ const init = () =>{
 }
 
 const init2 = () => {
-    return JSON.parse(localStorage.getItem('estado')) || [{"oro":0,"exp":0,"vida":100,"lvl":0,poke:"","infoPoke":{}}];
+    return JSON.parse(localStorage.getItem('estado')) || [{"oro":0,"exp":0,"vida":100,"lvl":0,poke:"Huevo","infoPoke":{}}];
 }
 
 

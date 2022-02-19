@@ -65,6 +65,7 @@ export function Task({data, funcDispatch, funcModal, idRef, estadoActual}){
     }
 
     return(
+        <>
             <li
                 key= {data.id}
                 className='lista'
@@ -80,6 +81,8 @@ export function Task({data, funcDispatch, funcModal, idRef, estadoActual}){
             <div>
                     {/* slint-disable-next-line no-unneeded-ternary */}
                 <button type='button' onClick={mostrarOptions}  className='btnOptions'>...</button>
+            </div>
+            </li>
                 {OptionsV ?
             <Options  
             todo = {data}
@@ -88,7 +91,6 @@ export function Task({data, funcDispatch, funcModal, idRef, estadoActual}){
             refId = {idRef}
             />
             :null}
-            </div>
-            </li>
+        </>
     )
 }

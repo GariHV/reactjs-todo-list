@@ -6,7 +6,7 @@ import './styles.css'
 import { todoReducer } from './todoReducer';
 import { estadoReduce } from './estadoReduce';
 import {ListaTasks} from "./components/listaTasks/listaTasks"
-import {PokeEspacio} from "./components/pokeEspacio/pokeEspacio"
+// import {PokeEspacio} from "./components/pokeEspacio/pokeEspacio"
 import {Modal} from "./components/modal/modal"
 import {BtnCrear} from "./components/btnCrear/btnCrear"
 import { ShopBackground } from './components/shopBackground/ShopBackground';
@@ -46,6 +46,7 @@ export const TodoApp = () => {
         const to = todos.map( (todo) => (
             <Task key={todo.id}
             data = {todo}
+            datos = {estado}
             estadoActual = {setestado}
             funcDispatch = {dispatch}
             funcModal ={mostarModal}
@@ -61,7 +62,6 @@ export const TodoApp = () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
     useEffect( () => {
-        console.log('guardado');
         localStorage.setItem('estado', JSON.stringify(estado))
     }, [estado]);
     const handleSubmit = (e) =>{
@@ -100,7 +100,6 @@ export const TodoApp = () => {
         }
         // reset();
     }
-    console.log(todos);
     
     return (
         <div >
@@ -108,13 +107,13 @@ export const TodoApp = () => {
             <Nav/>
             <Switch>
                 <Route path='/tienda'>
-                        <PokeEspacio/>
+                        {/* <PokeEspacio/> */}
                         <ShopBackground/>
                 </Route>
                 <Route path='/'>
                     <div ref={refId} hidden>0</div>
                     <div className='app'>
-                        <PokeEspacio/>
+                        {/* <PokeEspacio/> */}
                         <div className='generalTodo'>
                             <ListaTasks
                             nTask={todos.length}

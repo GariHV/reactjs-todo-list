@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from "react"
 import "./task.css"
 import {Options} from "../Options/options"
-import {estadoReduce} from "../../estadoReduce"
+
 
 function dif(data, mixChecked) {
     const {dificultad, done} = data
@@ -35,7 +35,7 @@ function dif(data, mixChecked) {
     }
 }
 
-export function Task({data, funcDispatch, funcModal, idRef, estadoActual}){
+export function Task({data, funcDispatch, funcModal, idRef, estadoActual, datos}){
     const [OptionsV,setOptions]=useState(false)
     const mostrarOptions=()=>{
         // eslint-disable-next-line no-unneeded-ternary
@@ -43,10 +43,9 @@ export function Task({data, funcDispatch, funcModal, idRef, estadoActual}){
     }
 
     function checkIfChecked  ()  {
-        const state = JSON.parse(localStorage.getItem('estado'));
         const condition =  {
             type: `${data.dificultad}-${!data.done}`,
-            payload: state
+            payload: datos[0]
         }
         console.log(condition);
         estadoActual(condition)

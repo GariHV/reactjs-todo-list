@@ -2,7 +2,7 @@ import React, { useEffect, useReducer,useState, useRef } from 'react'
 import { Switch, Route } from 'react-router-dom';
 import Forms from './components/from/Forms';
 import { Task } from './components/task/task';
-import './styles.scss'
+import './styles.css'
 import { todoReducer } from './Reduces/todoReducer';
 import { estadoReduce } from './Reduces/estadoReduce';
 import {ListaTasks} from "./components/listaTasks/listaTasks"

@@ -106,16 +106,24 @@ export const TodoApp = () => {
     return (
         <div >
 
-            <Nav/>
+            <Nav datos = {estado} />
             <PokeEspacio datos = {estado}/>
             <Switch>
                 <Route path='/tienda'>
                         <ShopBackground/>
                         <SecionTienda titulo="objetos">
-                            <Producto/>
-                            <Producto/>
-                            <Producto/>
-                            <Producto/>
+                            <Producto img="1001469812.jpeg"
+                                    nombrePro="Pocion Vida"
+                                    precio="10"/>
+                            <Producto img="1001469815.jpeg"
+                                    nombrePro="Pocion Exp"
+                                    precio="5"/>
+                            <Producto img="1001469813.jpeg"
+                                    nombrePro="Dia descanso"
+                                    precio="15"/>
+                            <Producto img="pngwing.com.png"
+                                    nombrePro="Huevo"
+                                    precio="30" />
                         </SecionTienda>
                         <SecionTienda titulo="Piedras">
                             <Producto/>
@@ -125,6 +133,7 @@ export const TodoApp = () => {
                         </SecionTienda>
                 </Route>
                 <Route path='/'>
+                <button type='button' onClick={()=>finDia(todos,dispatch,setestado)}>reinicio</button>
                     <div ref={refId} hidden>0</div>
                     <div className='app'>
                         <div className='generalTodo'>
@@ -162,7 +171,7 @@ function pokedex(){
 
 
 function revisarPokemon(state){
-    if(state["exp"]>= 10){
+    if(state["exp"]%10===0){
         if(state["lvl"]===0){
             npokemon=Math.floor(Math.random() * (151 - 1)) + 1;
             const pokedex=pokedex()
@@ -189,16 +198,18 @@ function revisarPokemon(state){
 }
 
 
-function finDia(){
+function finDia(tasks,dispatch,setestado){
     const d= new Date()
     const hour= d.getHours()
-    const tasks=JSON.parse(localStorage.getItem('todos'))
     if(hour===0){
         for (const task of tasks) {
             if(task.done===false){
-                task.dificultad+"-false"
+                setestado({ type: 'noComplet',
+                            payload: ""})
+            }else{
+                dispatch({  type: 'toggle',
+                            payload: task.id})
             }
-            task.done=false
         }
     }
 }

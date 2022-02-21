@@ -1,17 +1,17 @@
 export const estadoReduce = (state, action) => {
-    const {oro, exp} = state[0]
+    const {oro, exp,vida} = state[0]
     switch (action.type.toString()) {
         case "facil-true":
             return state.map( todo => 
                 (+todo.oro === +todo.oro)
-                ? {...todo, oro: oro+1, exp: exp+1}
+                ? {...todo, oro: oro+1, exp:exp+1}
                 : todo
                 );
 
         case "intermedio-true":
             return state.map( todo => 
                 (+todo.oro === +todo.oro)
-                ? {...todo, oro: oro+2, exp: exp+2}
+                ? {...todo, oro: oro+2, exp:exp+2}
                 : todo
                 );
 
@@ -44,6 +44,12 @@ export const estadoReduce = (state, action) => {
                 : todo
                 );
 
+        case "noComplet":
+            return state.map( todo => 
+                (+todo.vida === +todo.vida)
+                ? {...todo, vida: vida-2}
+                : todo
+                );
         default:
             return state;
     }

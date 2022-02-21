@@ -206,11 +206,9 @@ function revisarLvl(state,setestado){
 }
 
 async function revisarPokemon(state,setestado){
-        console.log("esta entreando ");
         const nivelPokemon=parseInt(state["lvl"])
         console.log(nivelPokemon);
-        if(nivelPokemon===1){
-            console.log("a");
+        if(nivelPokemon===1 && state["poke"]==="Huevo"){
             const npokemon=Math.floor(Math.random() * (67 - 1)) + 1;
             const poked=await pokedex()
             state["infoPoke"]=poked[npokemon]
@@ -222,7 +220,6 @@ async function revisarPokemon(state,setestado){
                 if(Object.keys(state["infoPoke"]).length>2){
                     console.log(state["infoPoke"]["lvl1"])
                     if(nivelPokemon>=state["infoPoke"]["lvl1"]){
-                        console.log("b");
                         state["poke"]=state["infoPoke"]["2"]
                         setestado({ type:"Pokemon", estado:state})
                     }
@@ -231,7 +228,6 @@ async function revisarPokemon(state,setestado){
             if(state["poke"]===state["infoPoke"]["2"]){
                 if(Object.keys(state["infoPoke"]).length>4){
                     if(nivelPokemon>=state["infoPoke"]["lvl2"]){
-                        console.log("c");
                         state["poke"]=state["infoPoke"]["3"]
                         setestado({ type:"Pokemon", estado:state})
                     }
@@ -244,7 +240,7 @@ async function revisarPokemon(state,setestado){
 function finDia(tasks,dispatch,setestado){
     const d= new Date()
     const hour= d.getHours()
-    if(hour===16){
+    if(hour===17){
         for (const task of tasks) {
             if(task.done===false){
                 setestado({ type: 'noComplet',

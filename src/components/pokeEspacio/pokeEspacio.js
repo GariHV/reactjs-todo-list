@@ -1,9 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+
+import React from 'react'
 import { ProgresBar, ProgrerLive} from '../ProgresBar/ProgresBar'
 import "./pokeSpacio.css"
 
 export function PokeEspacio({datos, poken, pokedexset}){
-    const {exp, vida, lvl, poke} = datos[0]
+    const {exp, vida, lvl, poke,infoPoke} = datos[0]
+    const {lvl1,lvl2}=infoPoke
     nPokedex(poke, pokedexset)
     const expe=exp.toString()
     const expArr=expe.split("")
@@ -14,6 +16,7 @@ export function PokeEspacio({datos, poken, pokedexset}){
             <div className='pokeInfo'>
                 <h1 className='white-color'>{poke}</h1>
                 <h2 className = 'white-color' > Lvl: {(lvl === 0) ? "0" : lvl} </h2>
+                <h3 className = 'white-color'>Evoluciona:lvl {(lvl>lvl1)?lvl2:lvl1}</h3>
             </div>
                 <img src={(poken === 0)? 'pngwing.com.png' : srcImg} alt=''/>
                 <div className="pokeStats">
@@ -26,6 +29,15 @@ export function PokeEspacio({datos, poken, pokedexset}){
     )
 }
 
+function cuandoEvoluciona(lvl,lvl1,lvl2){
+    console.log(lvl2);
+    if(lvl2)
+    // if(lvl>lvl2){
+    //     console.log(lvl);
+    //     return "Maxima Evolucion"
+    // }
+    return "Evoluciona:lvl"+ (lvl>lvl1)?lvl2:lvl1
+}
 
 async function nPokedex(poke,setnPokedex){
     const data= await imgPoke()

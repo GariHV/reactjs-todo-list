@@ -5,8 +5,10 @@ import "./pokeSpacio.css"
 export function PokeEspacio({datos}){
     console.log(datos);
     console.log(datos[0]);
-    const {exp, oro, vida, lvl, poke} = datos[0]
-    console.log(exp);
+    const {exp, vida, lvl, poke} = datos[0]
+    const expe=exp.toString()
+    const expArr=expe.split("")
+    const barraExp=expArr[expArr.length-1];
     const estado = JSON.parse(localStorage.getItem('estado'))[0]
     return (
         <div className="general">
@@ -16,9 +18,9 @@ export function PokeEspacio({datos}){
             </div>
                 <img src="pngwing.com.png" alt=''/>
                 <div className="pokeStats">
-                    <h3 className='white-color'>Experience</h3>
-                    <ProgresBar exp={exp}/>
-                    <h3 className='white-color'>Live</h3>
+                    <h3>Experience</h3>
+                    <ProgresBar exp={barraExp}/>
+                    <h3>Lived</h3>
                 <ProgrerLive progress={vida} key="progres" />
                 </div>
         </div>

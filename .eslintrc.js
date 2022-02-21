@@ -62,6 +62,8 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "import/named":"off",
+    "import/namespace":"off",
     "no-self-compare": "off",
     "react/react-in-jsx-scope":"off",
     "prefer-template":"off",

@@ -1,13 +1,13 @@
 import "./producto.css"
 
-export function Producto(){
+export function Producto({img,nombrePro,precio}){
     return(
         <div className="producto">
-            <img src="pngwing.com.png" alt="objeto Tienda"/>
-            <p>Huevo</p>
+            <img src={img} alt="objeto Tienda"/>
+            <p>{nombrePro}</p>
             <div>
-                <img src="pngwing.com.png" alt="objeto Tienda"/>
-                <p>50</p>
+                <img src="coin2.png" alt="Oro"/>
+                <p>{precio}</p>
             </div>
         </div>
     )

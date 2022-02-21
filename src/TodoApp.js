@@ -47,6 +47,7 @@ export const TodoApp = () => {
 
         const to = todos.map( (todo) => (
             <Task key={todo.id}
+            revisarPoke={revisarPokemon}
             data = {todo}
             datos = {estado}
             estadoActual = {setestado}
@@ -64,6 +65,7 @@ export const TodoApp = () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
     useEffect( () => {
+        console.log(estado);
         localStorage.setItem('estado', JSON.stringify(estado))
     }, [estado]);
     const handleSubmit = (e) =>{
@@ -133,7 +135,7 @@ export const TodoApp = () => {
                         </SecionTienda>
                 </Route>
                 <Route path='/'>
-                <button type='button' onClick={()=>finDia(todos,dispatch,setestado)}>reinicio</button>
+                <button type='button' onClick={()=>pokedex()}>reinicio</button>
                     <div ref={refId} hidden>0</div>
                     <div className='app'>
                         <div className='generalTodo'>
@@ -162,21 +164,24 @@ export const TodoApp = () => {
     )
 }
 
-
-function pokedex(){
-    return fetch('../public/evolucines.json')
-  .then(response => response.json())
-  .then(data => console.log(data));
+async function pokedex(){
+    const response=await fetch('evolucines.json')
+    const data = await response.json()
+    return data
 }
 
 
-function revisarPokemon(state){
-    if(state["exp"]%10===0){
+async function revisarPokemon(state,setestado){
+    if(state["exp"]){
+        console.log("esta entreando ");
         if(state["lvl"]===0){
-            npokemon=Math.floor(Math.random() * (151 - 1)) + 1;
-            const pokedex=pokedex()
-            state["infoPoke"]=pokedex[npokemon]
+            const npokemon=Math.floor(Math.random() * (67 - 1)) + 1;
+            const poked=await pokedex()
+            state["infoPoke"]=poked[npokemon]
             state["poke"]=state["infoPoke"][1]
+            console.log(state["infoPoke"]);
+            console.log(state["poke"]);
+            setestado({ type:"Pokemon", estado:state})
         }
         else if(state["lvl"]>0){
             if(state["poke"]===state["infoPoke"]["1"]){
@@ -195,6 +200,7 @@ function revisarPokemon(state){
             }
         }
     }
+    
 }
 
 

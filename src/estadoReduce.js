@@ -1,5 +1,5 @@
 export const estadoReduce = (state, action) => {
-    const {oro, exp,vida} = state[0]
+    const {oro, exp,vida,poke,infoPoke} = state[0]
     switch (action.type.toString()) {
         case "facil-true":
             return state.map( todo => 
@@ -50,6 +50,13 @@ export const estadoReduce = (state, action) => {
                 ? {...todo, vida: vida-2}
                 : todo
                 );
+        case "Pokemon":
+            return state.map( todo => {
+
+                return (todo === todo)
+                ? {...todo, poke: action["estado"].poke,infoPoke: action["estado"].infoPoke}
+                : todo
+            });
         default:
             return state;
     }

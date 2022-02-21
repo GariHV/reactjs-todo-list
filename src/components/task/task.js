@@ -35,7 +35,7 @@ function dif(data, mixChecked) {
     }
 }
 
-export function Task({data, funcDispatch, funcModal, idRef, estadoActual, datos}){
+export function Task({data, funcDispatch, funcModal, idRef, estadoActual, datos,revisarPoke}){
     const [OptionsV,setOptions]=useState(false)
     const mostrarOptions=()=>{
         // eslint-disable-next-line no-unneeded-ternary
@@ -47,9 +47,8 @@ export function Task({data, funcDispatch, funcModal, idRef, estadoActual, datos}
             type: `${data.dificultad}-${!data.done}`,
             payload: datos[0]
         }
-        console.log(condition);
         estadoActual(condition)
-        
+        revisarPoke(datos[0],estadoActual)
     }
 
     function handleToggle () {

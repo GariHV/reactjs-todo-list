@@ -104,7 +104,7 @@ export const TodoApp = () => {
     return (
         <div >
 
-            <Nav/>
+            <Nav datos = {estado}/>
             <Switch>
                 <Route path='/tienda'>
                         <PokeEspacio datos = {estado}/>

@@ -1,10 +1,12 @@
+import "./SecionTienda.css"
 
 
-function SecionTienda(){
+export function SecionTienda({children,titulo}){
     return(
-        <div>
-            <h2>titulo</h2>
-            <div></div>
+        <div className="SecionTienda">
+            <h2>{titulo}</h2>
+            <hr/>
+            <div>{children}</div>
         </div>
     )
 }

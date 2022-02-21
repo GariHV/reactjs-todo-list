@@ -1,10 +1,14 @@
-import React from 'react'
-import './producto.css'
+import "./Producto.css"
 
 export function Producto(){
-    console.log('va bien');
+    return(
+        <div className="producto">
+            <img src="pngwing.com.png" alt="objeto Tienda"/>
+            <p>Huevo</p>
+            <div>
+                <img src="pngwing.com.png" alt="objeto Tienda"/>
+                <p>50</p>
+            </div>
+        </div>
+    )
 }
-// function Producto(){
-//     return(
-//     )
-// }

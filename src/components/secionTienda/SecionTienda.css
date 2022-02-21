@@ -1,0 +1,10 @@
+
+
+.SecionTienda{
+   margin-left: 20px;
+}
+
+.SecionTienda>div{
+    display: flex;
+    flex-wrap: wrap;
+}

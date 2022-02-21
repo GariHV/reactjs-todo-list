@@ -27,6 +27,7 @@ const init2 = () => {
 
 export const TodoApp = () => {
     const refId = useRef(null);
+    const [nPoke, setnPokedex] = useState(0)
     const [todos, dispatch] = useReducer(todoReducer, [],init);
 
     const [estado, setestado] = useReducer(estadoReduce, [], init2);
@@ -107,7 +108,7 @@ export const TodoApp = () => {
         <div >
 
             <Nav datos = {estado} />
-            <PokeEspacio datos = {estado}/>
+            <PokeEspacio datos = {estado} poken={nPoke} pokedexset={setnPokedex}/>
             <Switch>
                 <Route path='/tienda'>
                         <ShopBackground/>
@@ -119,6 +120,8 @@ export const TodoApp = () => {
                                     data = {todos}
                                     estadoActual = {setestado}
                                     funcDispatch = {dispatch}
+                                    poken = {nPoke}
+                                    pokedexset={setnPokedex}
                                     />
                             <Producto img="1001469815.jpeg"
                                     nombrePro="Poción Exp"
@@ -126,21 +129,27 @@ export const TodoApp = () => {
                                     datos = {estado}
                                     data = {todos}
                                     estadoActual = {setestado}
-                                    funcDispatch = {dispatch}/>
+                                    funcDispatch = {dispatch}
+                                    poken = {nPoke}
+                                    pokedexset={setnPokedex}/>
                             <Producto img="1001469813.jpeg"
                                     nombrePro="Día descanso"
                                     precio="15"
                                     datos = {estado}
                                     data = {todos}
                                     estadoActual = {setestado}
-                                    funcDispatch = {dispatch}/>
+                                    funcDispatch = {dispatch}
+                                    poken = {nPoke}
+                                    pokedexset={setnPokedex}/>
                             <Producto img="pngwing.com.png"
                                     nombrePro="Huevo"
                                     precio="30" 
                                     datos = {estado}
                                     data = {todos}
                                     estadoActual = {setestado}
-                                    funcDispatch = {dispatch}/>
+                                    funcDispatch = {dispatch}
+                                    poken = {nPoke}
+                                    pokedexset={setnPokedex}/>
                         </SecionTienda>
                         <SecionTienda titulo="Piedras">
                             <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>

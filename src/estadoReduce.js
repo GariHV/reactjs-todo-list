@@ -84,7 +84,12 @@ export const estadoReduce = (state, action) => {
         return state.map(todo => {
             return (todo === todo) ? {
                     ...todo,
-                    oro: oro - 30
+                    oro: oro - 30,
+                    poke: "Huevo",
+                    infoPoke: {},
+                    lvl: 0,
+                    vida: 100,
+                    exp: 0
                 } :
                 todo
         });

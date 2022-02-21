@@ -16,6 +16,7 @@ export function Nav(){
                     Tienda
                     </Link>
                 </li>
+                <img className='coin' src= 'coin.png' alt = ''/>
             </ul>
         </nav>
     </div>

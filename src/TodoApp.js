@@ -6,7 +6,7 @@ import './styles.css'
 import { todoReducer } from './todoReducer';
 import { estadoReduce } from './estadoReduce';
 import {ListaTasks} from "./components/listaTasks/listaTasks"
-// import {PokeEspacio} from "./components/pokeEspacio/pokeEspacio"
+import {PokeEspacio} from "./components/pokeEspacio/pokeEspacio"
 import {Modal} from "./components/modal/modal"
 import {BtnCrear} from "./components/btnCrear/btnCrear"
 import { ShopBackground } from './components/shopBackground/ShopBackground';
@@ -107,13 +107,13 @@ export const TodoApp = () => {
             <Nav/>
             <Switch>
                 <Route path='/tienda'>
-                        {/* <PokeEspacio/> */}
+                        <PokeEspacio datos = {estado}/>
                         <ShopBackground/>
                 </Route>
                 <Route path='/'>
                     <div ref={refId} hidden>0</div>
                     <div className='app'>
-                        {/* <PokeEspacio/> */}
+                        <PokeEspacio datos = {estado}/>
                         <div className='generalTodo'>
                             <ListaTasks
                             nTask={todos.length}

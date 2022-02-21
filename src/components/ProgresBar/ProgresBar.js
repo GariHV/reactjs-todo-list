@@ -1,5 +1,5 @@
 import React from 'react'
-import "./ProgresBar.css"
+import "./ProgresBar.scss"
 
 
 export function ProgresBar({exp}){

@@ -1,4 +1,4 @@
-import "./Producto.css"
+import "./Producto.scss"
 
 export function Producto({img,nombrePro,precio, datos, estadoActual, funcDispatch, data, poken, pokedexset, lvlcheck}){
     return(

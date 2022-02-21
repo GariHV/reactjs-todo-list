@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form, ErrorMessage } from 'formik'
-import TextInput from './textInput/TextInput'
-import Select from './select/Select'
+import TextInput from '../textInput/TextInput'
+import Select from '../select/Select'
 
 
 const validate = (values) => {

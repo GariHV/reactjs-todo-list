@@ -1,4 +1,4 @@
-import "./listaTasks.css"
+import "./listaTasks.scss"
 import React, { useState } from 'react'
 
 

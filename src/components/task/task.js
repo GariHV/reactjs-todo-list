@@ -1,6 +1,6 @@
 
 import { useState } from "react"
-import "./task.css"
+import "./task.scss"
 import {Options} from "../Options/options"
 
 

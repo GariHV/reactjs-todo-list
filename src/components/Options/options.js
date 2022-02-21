@@ -1,5 +1,5 @@
 import React from 'react'
-import "./options.css"
+import "./options.scss"
 
 export function Options({todo, dispatchFunc, modalFunc, refId}){
     const {id} = todo 

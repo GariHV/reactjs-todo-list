@@ -1,10 +1,10 @@
 import React, { useEffect, useReducer,useState, useRef } from 'react'
 import { Switch, Route } from 'react-router-dom';
-import Forms from './components/Forms';
+import Forms from './components/from/Forms';
 import { Task } from './components/task/task';
-import './styles.css'
-import { todoReducer } from './todoReducer';
-import { estadoReduce } from './estadoReduce';
+import './styles.scss'
+import { todoReducer } from './Reduces/todoReducer';
+import { estadoReduce } from './Reduces/estadoReduce';
 import {ListaTasks} from "./components/listaTasks/listaTasks"
 import {PokeEspacio} from "./components/pokeEspacio/pokeEspacio"
 import {Modal} from "./components/modal/modal"
@@ -244,7 +244,8 @@ async function revisarPokemon(state,setestado){
 function finDia(tasks,dispatch,setestado){
     const d= new Date()
     const hour= d.getHours()
-    if(hour===17){
+    console.log(hour);
+    if(hour===19){
         for (const task of tasks) {
             if(task.done===false){
                 setestado({ type: 'noComplet',

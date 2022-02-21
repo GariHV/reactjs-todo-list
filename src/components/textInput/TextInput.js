@@ -1,6 +1,6 @@
 import React from 'react'
 import { useField } from 'formik'
-import './Input.css'
+import './Input.scss'
 
 // const styles={
 //   textI:{

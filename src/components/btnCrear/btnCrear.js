@@ -1,5 +1,5 @@
 import React from 'react'
-import "./btnCrear.css"
+import "./btnCrear.scss"
 
 
 

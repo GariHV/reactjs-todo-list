@@ -1,4 +1,4 @@
-import "./SecionTienda.css"
+import "./SecionTienda.scss"
 
 
 export function SecionTienda({children,titulo}){

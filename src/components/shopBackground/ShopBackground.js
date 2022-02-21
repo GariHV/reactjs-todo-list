@@ -1,5 +1,5 @@
 import React from 'react'
-import './ShopBackground.css'
+import './ShopBackground.scss'
 
 export function ShopBackground () {
     return (

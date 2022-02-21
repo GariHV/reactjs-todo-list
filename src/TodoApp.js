@@ -21,7 +21,7 @@ const init = () =>{
 }
 
 const init2 = () => {
-    return JSON.parse(localStorage.getItem('estado')) || [{"oro":0,"exp":0,"vida":100,"lvl":0,poke:"Huevo","infoPoke":{}}];
+    return JSON.parse(localStorage.getItem('estado')) || [{"oro":0,"exp":0,"vida":100,"lvl":"0",poke:"Huevo","infoPoke":{}}];
 }
 
 
@@ -97,7 +97,6 @@ export const TodoApp = () => {
                 type:'edit',
                 payload: newTodo
             }
-            console.log(editarTodo)
             dispatch( editarTodo )
             resetearModal()
         }
@@ -190,16 +189,18 @@ async function pokedex(){
 function revisarLvl(state,setestado){
     const expe=state["exp"].toString()
     const realLvl = expe.substring(0, expe.length - 1);
-    if(state["lvl"]!==realLvl){
+    if(state["lvl"]!==(realLvl)?realLvl:"0"){
+        console.log("es diferente");
         setestado({ type:"lvl", lvl:realLvl})
         revisarPokemon(state,setestado)
     }
 }
 
 async function revisarPokemon(state,setestado){
-  
         console.log("esta entreando ");
-        if(state["lvl"]===0){
+        const nivelPokemon=parseInt(state["lvl"])
+        console.log(nivelPokemon);
+        if(nivelPokemon===1){
             console.log("a");
             const npokemon=Math.floor(Math.random() * (67 - 1)) + 1;
             const poked=await pokedex()
@@ -207,10 +208,11 @@ async function revisarPokemon(state,setestado){
             state["poke"]=state["infoPoke"][1]
             setestado({ type:"Pokemon", estado:state})
         }
-        else if(state["lvl"]>0){
+        else if(nivelPokemon>1){
             if(state["poke"]===state["infoPoke"]["1"]){
                 if(Object.keys(state["infoPoke"]).length>2){
-                    if(state["lvl"]>=state["infoPoke"]["lvl1"]){
+                    console.log(state["infoPoke"]["lvl1"])
+                    if(nivelPokemon>=state["infoPoke"]["lvl1"]){
                         console.log("b");
                         state["poke"]=state["infoPoke"]["2"]
                         setestado({ type:"Pokemon", estado:state})
@@ -219,7 +221,7 @@ async function revisarPokemon(state,setestado){
             }
             if(state["poke"]===state["infoPoke"]["2"]){
                 if(Object.keys(state["infoPoke"]).length>4){
-                    if(state["lvl"]>=state["infoPoke"]["lvl2"]){
+                    if(nivelPokemon>=state["infoPoke"]["lvl2"]){
                         console.log("c");
                         state["poke"]=state["infoPoke"]["3"]
                         setestado({ type:"Pokemon", estado:state})
@@ -233,7 +235,7 @@ async function revisarPokemon(state,setestado){
 function finDia(tasks,dispatch,setestado){
     const d= new Date()
     const hour= d.getHours()
-    if(hour===15){
+    if(hour===16){
         for (const task of tasks) {
             if(task.done===false){
                 setestado({ type: 'noComplet',

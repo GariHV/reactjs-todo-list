@@ -73,7 +73,6 @@ export const estadoReduce = (state, action) => {
                 todo
         });
         case "Día descanso":
-            console.log(action);
         return state.map(todo => {
             return (todo === todo) ? {
                     ...todo,

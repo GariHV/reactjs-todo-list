@@ -2,50 +2,50 @@
     "1": "Bulbasaur",
     "2": "Ivysaur",
     "3": "Venusaur",
-    "lvl1": "(Level 16)",
-    "lvl2": "(Level 32)"
+    "lvl1": 16,
+    "lvl2": 32
 }, {
     "1": "Charmander",
     "2": "Charmeleon",
     "3": "Charizard",
-    "lvl1": "(Level 16)",
-    "lvl2": "(Level 36)"
+    "lvl1": 16,
+    "lvl2": 36
 }, {
     "1": "Squirtle",
     "2": "Wartortle",
     "3": "Blastoise",
-    "lvl1": "(Level 16)",
-    "lvl2": "(Level 36)"
+    "lvl1": 16,
+    "lvl2": 36
 }, {
     "1": "Caterpie",
     "2": "Metapod",
     "3": "Butterfree",
-    "lvl1": "(Level 7)",
-    "lvl2": "(Level 10)"
+    "lvl1": 7,
+    "lvl2": 10
 }, {
     "1": "Weedle",
     "2": "Kakuna",
     "3": "Beedrill",
-    "lvl1": "(Level 7)",
-    "lvl2": "(Level 10)"
+    "lvl1": 7,
+    "lvl2": 10
 }, {
     "1": "Pidgey",
     "2": "Pidgeotto",
     "3": "Pidgeot",
-    "lvl1": "(Level 18)",
-    "lvl2": "(Level 36)"
+    "lvl1": 18,
+    "lvl2": 36
 }, {
     "1": "Rattata",
     "2": "Raticate",
-    "lvl1": "(Level 20)"
+    "lvl1": 20
 }, {
     "1": "Spearow",
     "2": "Fearow",
-    "lvl1": "(Level 20)"
+    "lvl1": 20
 }, {
     "1": "Ekans",
     "2": "Arbok",
-    "lvl1": "(Level 22)"
+    "lvl1": 22
 }, {
     "1": "Pikachu",
     "2": "Raichu",
@@ -53,18 +53,18 @@
 },  {
     "1": "Sandshrew",
     "2": "Sandslash",
-    "lvl1": "(Level 22)"
+    "lvl1": 22
 }, {
     "1": "Nidoran\u2640",
     "2": "Nidorina",
     "3": "Nidoqueen",
-    "lvl1": "(Level 16)",
+    "lvl1": 16,
     "lvl2": "(use Moon Stone)"
 }, {
     "1": "Nidoran\u2642",
     "2": "Nidorino",
     "3": "Nidoking",
-    "lvl1": "(Level 16)",
+    "lvl1": 16,
     "lvl2": "(use Moon Stone)"
 }, {
     "1": "Clefairy",
@@ -82,38 +82,38 @@
     "1": "Zubat",
     "2": "Golbat",
     "3": "Crobat",
-    "lvl1": "(Level 22)",
+    "lvl1": 22,
     "lvl2": "(high Friendship)"
 }, {
     "1": "Oddish",
     "2": "Gloom",
     "3": "Vileplume",
-    "lvl1": "(Level 21)",
+    "lvl1": 21,
     "lvl2": "(use Leaf Stone)"
 }, {
     "1": "Paras",
     "2": "Parasect",
-    "lvl1": "(Level 24)"
+    "lvl1": 24
 }, {
     "1": "Venonat",
     "2": "Venomoth",
-    "lvl1": "(Level 31)"
+    "lvl1": 31
 }, {
     "1": "Diglett",
     "2": "Dugtrio",
-    "lvl1": "(Level 26)"
+    "lvl1": 26
 },  {
     "1": "Meowth",
     "2": "Persian",
-    "lvl1": "(Level 28)"
+    "lvl1": 28
 }, {
     "1": "Psyduck",
     "2": "Golduck",
-    "lvl1": "(Level 33)"
+    "lvl1": 33
 }, {
     "1": "Mankey",
     "2": "Primeape",
-    "lvl1": "(Level 28)"
+    "lvl1": 28
 }, {
     "1": "Growlithe",
     "2": "Arcanine",
@@ -122,60 +122,60 @@
     "1": "Poliwag",
     "2": "Poliwhirl",
     "3": "Poliwrath",
-    "lvl1": "(Level 25)",
+    "lvl1": 25,
     "lvl2": "(use Water Stone)"
 }, {
     "1": "Abra",
     "2": "Kadabra",
     "3": "Alakazam",
-    "lvl1": "(Level 16)",
+    "lvl1": 16,
     "lvl2": "(Trade)"
 }, {
     "1": "Machop",
     "2": "Machoke",
     "3": "Machamp",
-    "lvl1": "(Level 28)",
+    "lvl1": 28,
     "lvl2": "(Trade)"
 }, {
     "1": "Bellsprout",
     "2": "Weepinbell",
     "3": "Victreebel",
-    "lvl1": "(Level 21)",
+    "lvl1": 21,
     "lvl2": "(use Leaf Stone)"
 }, {
     "1": "Tentacool",
     "2": "Tentacruel",
-    "lvl1": "(Level 30)"
+    "lvl1": 30
 }, {
     "1": "Geodude",
     "2": "Graveler",
     "3": "Golem",
-    "lvl1": "(Level 25)",
+    "lvl1": 25,
     "lvl2": "(Trade)"
 },  {
     "1": "Ponyta",
     "2": "Rapidash",
-    "lvl1": "(Level 40)"
+    "lvl1": 40
 }, {
     "1": "Slowpoke",
     "2": "Slowbro",
-    "lvl1": "(Level 37)"
+    "lvl1": 37
 },  {
     "1": "Magnemite",
     "2": "Magneton",
-    "lvl1": "(Level 30)"
+    "lvl1": 30
 }, {
     "1": "Doduo",
     "2": "Dodrio",
-    "lvl1": "(Level 31)"
+    "lvl1": 31
 }, {
     "1": "Seel",
     "2": "Dewgong",
-    "lvl1": "(Level 34)"
+    "lvl1": 34
 }, {
     "1": "Grimer",
     "2": "Muk",
-    "lvl1": "(Level 38)"
+    "lvl1": 38
 }, {
     "1": "Shellder",
     "2": "Cloyster",
@@ -184,22 +184,22 @@
     "1": "Gastly",
     "2": "Haunter",
     "3": "Gengar",
-    "lvl1": "(Level 25)",
+    "lvl1": 25,
     "lvl2": "(Trade)"
 }, {
     "1": "Onix"
 }, {
     "1": "Drowzee",
     "2": "Hypno",
-    "lvl1": "(Level 26)"
+    "lvl1": 26
 }, {
     "1": "Krabby",
     "2": "Kingler",
-    "lvl1": "(Level 28)"
+    "lvl1": 28
 }, {
     "1": "Voltorb",
     "2": "Electrode",
-    "lvl1": "(Level 30)"
+    "lvl1": 30
 },{
     "1": "Exeggcute",
     "2": "Exeggutor",
@@ -207,7 +207,7 @@
 }, {
     "1": "Cubone",
     "2": "Marowak",
-    "lvl1": "(Level 28)"
+    "lvl1": 28
 }, {
     "1": "Hitmonlee"
 },  {
@@ -217,11 +217,11 @@
 }, {
     "1": "Koffing",
     "2": "Weezing",
-    "lvl1": "(Level 35)"
+    "lvl1": 35
 },  {
     "1": "Rhyhorn",
     "2": "Rhydon",
-    "lvl1": "(Level 42)"
+    "lvl1": 42
 }, {
     "1": "Chansey"
 }, {
@@ -229,11 +229,11 @@
 }, {
     "1": "Horsea",
     "2": "Seadra",
-    "lvl1": "(Level 32)"
+    "lvl1": 32
 }, {
     "1": "Goldeen",
     "2": "Seaking",
-    "lvl1": "(Level 33)"
+    "lvl1": 33
 }, {
     "1": "Staryu",
     "2": "Starmie",
@@ -247,20 +247,20 @@
 },{
     "1": "Smoochum",
     "2": "Jynx",
-    "lvl1": "(Level 30)"
+    "lvl1": 30
 }, {
     "1": "Elekid",
     "2": "Electabuzz",
-    "lvl1": "(Level 30)"
+    "lvl1": 30
 
 }, {
     "1": "Magby",
     "2": "Magmar",
-    "lvl1": "(Level 30)"
+    "lvl1": 30
 }, {
     "1": "Magikarp",
     "2": "Gyarados",
-    "lvl1": "(Level 20)"
+    "lvl1": 20
 }, {
     "1": "Eevee",
     "2": "Vaporeon",
@@ -274,17 +274,17 @@
 }, {
     "1": "Omanyte",
     "2": "Omastar",
-    "lvl1": "(Level 40)"
+    "lvl1": 40
 }, {
     "1": "Kabuto",
     "2": "Kabutops",
-    "lvl1": "(Level 40)"
+    "lvl1": 40
 }, {
     "2": "Snorlax"
 }, {
     "1": "Dratini",
     "2": "Dragonair",
     "3": "Dragonite",
-    "lvl1": "(Level 30)",
-    "lvl2": "(Level 55)"
+    "lvl1": 30,
+    "lvl2": 55
 }]

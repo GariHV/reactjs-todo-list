@@ -1,5 +1,4 @@
 
-import React from 'react'
 import { useState } from "react"
 import "./task.css"
 import {Options} from "../Options/options"

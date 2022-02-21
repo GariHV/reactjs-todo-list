@@ -3,7 +3,6 @@ import "./ProgresBar.css"
 
 
 export function ProgresBar({exp}){
-  console.log(exp);
   const fullExp = [];
   function setExp(v){
     for (let i = 0; i < v; i++) {

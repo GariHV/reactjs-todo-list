@@ -11,6 +11,8 @@ import {Modal} from "./components/modal/modal"
 import {BtnCrear} from "./components/btnCrear/btnCrear"
 import { ShopBackground } from './components/shopBackground/ShopBackground';
 import {Nav} from "./components/nav/nav"
+import { Producto} from "./components/productoTienda/producto"
+import { SecionTienda} from "./components/secionTienda/secionTienda"
 
 
 
@@ -105,15 +107,26 @@ export const TodoApp = () => {
         <div >
 
             <Nav/>
+            <PokeEspacio datos = {estado}/>
             <Switch>
                 <Route path='/tienda'>
-                        <PokeEspacio datos = {estado}/>
                         <ShopBackground/>
+                        <SecionTienda titulo="objetos">
+                            <Producto/>
+                            <Producto/>
+                            <Producto/>
+                            <Producto/>
+                        </SecionTienda>
+                        <SecionTienda titulo="Piedras">
+                            <Producto/>
+                            <Producto/>
+                            <Producto/>
+                            <Producto/>
+                        </SecionTienda>
                 </Route>
                 <Route path='/'>
                     <div ref={refId} hidden>0</div>
                     <div className='app'>
-                        <PokeEspacio datos = {estado}/>
                         <div className='generalTodo'>
                             <ListaTasks
                             nTask={todos.length}

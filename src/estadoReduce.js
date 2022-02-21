@@ -85,8 +85,7 @@ export const estadoReduce = (state, action) => {
         return state.map(todo => {
             return (todo === todo) ? {
                     ...todo,
-                    oro: oro - 10,
-                    vida: vida + 15
+                    oro: oro - 30
                 } :
                 todo
         });

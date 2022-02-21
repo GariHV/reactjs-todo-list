@@ -1,4 +1,4 @@
-import "./Producto.css"
+import "./producto.css"
 
 export function Producto({img,nombrePro,precio, datos, estadoActual, funcDispatch, data}){
     return(

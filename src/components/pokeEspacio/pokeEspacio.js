@@ -11,14 +11,14 @@ export function PokeEspacio({datos}){
     return (
         <div className="general">
             <div className='pokeInfo'>
-                <h1 >{poke}</h1>
+                <h1 className='white-color'>{poke}</h1>
                 <h2 >{(lvl===0)? "":lvl}</h2>
             </div>
                 <img src="pngwing.com.png" alt=''/>
                 <div className="pokeStats">
-                    <h3>Experience</h3>
+                    <h3 className='white-color'>Experience</h3>
                     <ProgresBar exp={exp}/>
-                    <h3>Lived</h3>
+                    <h3 className='white-color'>Live</h3>
                 <ProgrerLive progress={vida} key="progres" />
                 </div>
         </div>

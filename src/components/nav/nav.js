@@ -18,9 +18,9 @@ export function Nav({datos}){
                     </Link>
                 </li>
             </ul>
-            <div>
+            <div className='coin-container'>
                 <img className = 'coin' src = "coin2.png" alt = ''/>
-                <h3>{oro}</h3>
+                <h3 className='white-color coin-value'>{oro}</h3>
             </div>
         </nav>
     </div>

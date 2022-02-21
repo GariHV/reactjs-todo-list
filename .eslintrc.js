@@ -62,6 +62,8 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "no-return-await":"off",
+    "consistent-return":"off",
     "import/named":"off",
     "import/namespace":"off",
     "no-self-compare": "off",

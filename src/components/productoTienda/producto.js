@@ -1,4 +1,4 @@
-import "./producto.css"
+import "./Producto.css"
 
 export function Producto({img,nombrePro,precio}){
     return(

@@ -52,9 +52,14 @@ export const estadoReduce = (state, action) => {
                 );
         case "Pokemon":
             return state.map( todo => {
-
                 return (todo === todo)
                 ? {...todo, poke: action["estado"].poke,infoPoke: action["estado"].infoPoke}
+                : todo
+            });
+        case "lvl":
+            return state.map( todo => {
+                return (todo === todo)
+                ? {...todo,"lvl":action["lvl"]}
                 : todo
             });
         default:

@@ -47,7 +47,7 @@ export const TodoApp = () => {
 
         const to = todos.map( (todo) => (
             <Task key={todo.id}
-            revisarPoke={revisarPokemon}
+            revisarLvl={revisarLvl}
             data = {todo}
             datos = {estado}
             estadoActual = {setestado}
@@ -135,7 +135,7 @@ export const TodoApp = () => {
                         </SecionTienda>
                 </Route>
                 <Route path='/'>
-                <button type='button' onClick={()=>pokedex()}>reinicio</button>
+                <button type='button' onClick={()=>finDia(todos,dispatch,setestado)}>reinicio</button>
                     <div ref={refId} hidden>0</div>
                     <div className='app'>
                         <div className='generalTodo'>
@@ -171,43 +171,53 @@ async function pokedex(){
 }
 
 
+function revisarLvl(state,setestado){
+    const expe=state["exp"].toString()
+    const realLvl = expe.substring(0, expe.length - 1);
+    if(state["lvl"]!==realLvl){
+        setestado({ type:"lvl", lvl:realLvl})
+        revisarPokemon(state,setestado)
+    }
+}
+
 async function revisarPokemon(state,setestado){
-    if(state["exp"]){
+  
         console.log("esta entreando ");
         if(state["lvl"]===0){
+            console.log("a");
             const npokemon=Math.floor(Math.random() * (67 - 1)) + 1;
             const poked=await pokedex()
             state["infoPoke"]=poked[npokemon]
             state["poke"]=state["infoPoke"][1]
-            console.log(state["infoPoke"]);
-            console.log(state["poke"]);
             setestado({ type:"Pokemon", estado:state})
         }
         else if(state["lvl"]>0){
             if(state["poke"]===state["infoPoke"]["1"]){
                 if(Object.keys(state["infoPoke"]).length>2){
                     if(state["lvl"]>=state["infoPoke"]["lvl1"]){
+                        console.log("b");
                         state["poke"]=state["infoPoke"]["2"]
+                        setestado({ type:"Pokemon", estado:state})
                     }
                 }
             }
             if(state["poke"]===state["infoPoke"]["2"]){
                 if(Object.keys(state["infoPoke"]).length>4){
                     if(state["lvl"]>=state["infoPoke"]["lvl2"]){
+                        console.log("c");
                         state["poke"]=state["infoPoke"]["3"]
+                        setestado({ type:"Pokemon", estado:state})
                     }
                 }
             }
         }
     }
-    
-}
 
 
 function finDia(tasks,dispatch,setestado){
     const d= new Date()
     const hour= d.getHours()
-    if(hour===0){
+    if(hour===14){
         for (const task of tasks) {
             if(task.done===false){
                 setestado({ type: 'noComplet',

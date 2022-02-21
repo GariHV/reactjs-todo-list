@@ -35,15 +35,12 @@ export const estadoReduce = (state, action) => {
                 ? {...todo, oro: oro-2, exp: exp-2}
                 : todo
                 );
-
-
         case "dificil-false":
             return state.map( todo => 
                 (+todo.oro === +todo.oro)
                 ? {...todo, oro: oro-3, exp: exp-3}
                 : todo
                 );
-
         case "noComplet":
             return state.map( todo => 
                 (+todo.vida === +todo.vida)
@@ -52,11 +49,47 @@ export const estadoReduce = (state, action) => {
                 );
         case "Pokemon":
             return state.map( todo => {
-
                 return (todo === todo)
                 ? {...todo, poke: action["estado"].poke,infoPoke: action["estado"].infoPoke}
                 : todo
             });
+        case "Poción Vida":
+            return state.map(todo => {
+                return (todo === todo) ?
+                    {
+                        ...todo,
+                        oro: oro-10,
+                        vida: vida+15
+                    } :
+                    todo
+            });
+        case "Poción Exp":
+        return state.map(todo => {
+            return (todo === todo) ? {
+                    ...todo,
+                    oro: oro - 5,
+                    exp: exp + 5
+                } :
+                todo
+        });
+        case "Día descanso":
+            console.log(action);
+        return state.map(todo => {
+            return (todo === todo) ? {
+                    ...todo,
+                    oro: oro - 10,
+                } :
+                todo
+        });
+        case "Huevo":
+        return state.map(todo => {
+            return (todo === todo) ? {
+                    ...todo,
+                    oro: oro - 10,
+                    vida: vida + 15
+                } :
+                todo
+        });
         default:
             return state;
     }

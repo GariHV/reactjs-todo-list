@@ -65,7 +65,6 @@ export const TodoApp = () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
     useEffect( () => {
-        console.log(estado);
         localStorage.setItem('estado', JSON.stringify(estado))
     }, [estado]);
     const handleSubmit = (e) =>{
@@ -115,27 +114,44 @@ export const TodoApp = () => {
                         <ShopBackground/>
                         <SecionTienda titulo="objetos">
                             <Producto img="1001469812.jpeg"
-                                    nombrePro="Pocion Vida"
-                                    precio="10"/>
+                                    nombrePro="Poción Vida"
+                                    precio="10"
+                                    datos = {estado}
+                                    data = {todos}
+                                    estadoActual = {setestado}
+                                    funcDispatch = {dispatch}
+                                    />
                             <Producto img="1001469815.jpeg"
-                                    nombrePro="Pocion Exp"
-                                    precio="5"/>
+                                    nombrePro="Poción Exp"
+                                    precio="5"
+                                    datos = {estado}
+                                    data = {todos}
+                                    estadoActual = {setestado}
+                                    funcDispatch = {dispatch}/>
                             <Producto img="1001469813.jpeg"
-                                    nombrePro="Dia descanso"
-                                    precio="15"/>
+                                    nombrePro="Día descanso"
+                                    precio="15"
+                                    datos = {estado}
+                                    data = {todos}
+                                    estadoActual = {setestado}
+                                    funcDispatch = {dispatch}/>
                             <Producto img="pngwing.com.png"
                                     nombrePro="Huevo"
-                                    precio="30" />
+                                    precio="30" 
+                                    datos = {estado}
+                                    data = {todos}
+                                    estadoActual = {setestado}
+                                    funcDispatch = {dispatch}/>
                         </SecionTienda>
                         <SecionTienda titulo="Piedras">
-                            <Producto/>
-                            <Producto/>
-                            <Producto/>
-                            <Producto/>
+                            <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
+                            <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
+                            <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
+                            <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
                         </SecionTienda>
                 </Route>
                 <Route path='/'>
-                <button type='button' onClick={()=>pokedex()}>reinicio</button>
+                <button type='button' onClick={()=>finDia(todos,dispatch,setestado)}>Reinicio</button>
                     <div ref={refId} hidden>0</div>
                     <div className='app'>
                         <div className='generalTodo'>
@@ -207,7 +223,7 @@ async function revisarPokemon(state,setestado){
 function finDia(tasks,dispatch,setestado){
     const d= new Date()
     const hour= d.getHours()
-    if(hour===0){
+    if(hour===15){
         for (const task of tasks) {
             if(task.done===false){
                 setestado({ type: 'noComplet',

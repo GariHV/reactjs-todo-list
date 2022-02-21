@@ -62,6 +62,8 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "react/self-closing-comp":"off",
+    "jsx-a11y/heading-has-content":"off",
     "no-nested-ternary":"off",
     "radix":"off",
     "jsx-a11y/click-events-have-key-events": "off",

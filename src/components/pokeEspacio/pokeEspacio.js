@@ -16,7 +16,7 @@ export function PokeEspacio({datos, poken, pokedexset}){
             <div className='pokeInfo'>
                 <h1 className='white-color'>{poke}</h1>
                 <h2 className = 'white-color' > Lvl: {(lvl === 0) ? "0" : lvl} </h2>
-                <h3 className = 'white-color'>{cuandoEvoluciona(lvl,lvl1,lvl2)}</h3>
+                <h3 className = 'white-color'></h3>
             </div>
                 <img src={(poken === 0)? 'pngwing.com.png' : srcImg} alt=''/>
                 <div className="pokeStats">
@@ -29,31 +29,31 @@ export function PokeEspacio({datos, poken, pokedexset}){
     )
 }
 // Evoluciona:lvl {(lvl>lvl1)?lvl2:lvl1}
-function cuandoEvoluciona(lvl,lvl1,lvl2){
-    console.log(lvl2);
-    if(lvl2){
-        if(isNum(lvl2)){
-            if(lvl>lvl2){
-                return "Maxima Evolucion"
-            }
-            if(lvl>lvl1){
-                return "Evoluciona al lvl:"+lvl2
-            }
-            return "Evoluciona al lvl:"+lvl1
+// function cuandoEvoluciona(lvl,lvl1,lvl2){
+//     console.log(lvl2);
+//     if(lvl2){
+//         if(isNum(lvl2)){
+//             if(lvl>lvl2){
+//                 return "Maxima Evolucion"
+//             }
+//             if(lvl>lvl1){
+//                 return "Evoluciona al lvl:"+lvl2
+//             }
+//             return "Evoluciona al lvl:"+lvl1
 
-        }
-            if(lvl<lvl1){
-                return "Evoluciona al lvl:"+lvl1
-            }
-            return "Evoluciona con:" + lvl2
-    }if(lvl1){
-        if(lvl<lvl1){
-            return "Evoluciona al lvl:"+lvl1
-        }
-        return "Maxima evolucion"
-    }
-    return "No evoluciona"
-}
+//         }
+//             if(lvl<lvl1){
+//                 return "Evoluciona al lvl:"+lvl1
+//             }
+//             return "Evoluciona con:" + lvl2
+//     }if(lvl1){
+//         if(lvl<lvl1){
+//             return "Evoluciona al lvl:"+lvl1
+//         }
+//         return "Maxima evolucion"
+//     }
+//     return "No evoluciona"
+// }
 
 async function nPokedex(poke,setnPokedex){
     const data= await imgPoke()

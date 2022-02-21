@@ -245,7 +245,7 @@ function finDia(tasks,dispatch,setestado){
     const d= new Date()
     const hour= d.getHours()
     console.log(hour);
-    if(hour===19){
+    if(hour===20){
         for (const task of tasks) {
             if(task.done===false){
                 setestado({ type: 'noComplet',

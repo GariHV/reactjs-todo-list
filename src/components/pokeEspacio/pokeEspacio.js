@@ -13,7 +13,7 @@ export function PokeEspacio({datos}){
     return (
         <div className="general">
             <div className='pokeInfo'>
-                <h1 >{poke}</h1>
+                <h1 className='white-color'>{poke}</h1>
                 <h2 >{(lvl===0)? "":lvl}</h2>
             </div>
                 <img src="pngwing.com.png" alt=''/>

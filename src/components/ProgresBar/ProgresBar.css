@@ -5,10 +5,11 @@
     display: grid;
     grid-template-columns: repeat(3,6px) repeat(10, 9px 6px) repeat(2,6px);
     grid-template-rows: repeat(6,6px);
+    color: white;
   }
   
   .block-border {
-    background-color: rgb(50,50,50);
+    background-color: rgb(255, 255, 255);
   }
   
   .block-meter {

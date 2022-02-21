@@ -122,6 +122,7 @@ export const TodoApp = () => {
                                     funcDispatch = {dispatch}
                                     poken = {nPoke}
                                     pokedexset={setnPokedex}
+                                    lvlcheck={revisarLvl}
                                     />
                             <Producto img="1001469815.jpeg"
                                     nombrePro="Poción Exp"
@@ -131,7 +132,8 @@ export const TodoApp = () => {
                                     estadoActual = {setestado}
                                     funcDispatch = {dispatch}
                                     poken = {nPoke}
-                                    pokedexset={setnPokedex}/>
+                                    pokedexset={setnPokedex}
+                                    lvlcheck={revisarLvl}/>
                             <Producto img="1001469813.jpeg"
                                     nombrePro="Día descanso"
                                     precio="15"
@@ -140,7 +142,8 @@ export const TodoApp = () => {
                                     estadoActual = {setestado}
                                     funcDispatch = {dispatch}
                                     poken = {nPoke}
-                                    pokedexset={setnPokedex}/>
+                                    pokedexset={setnPokedex}
+                                    lvlcheck={revisarLvl}/>
                             <Producto img="pngwing.com.png"
                                     nombrePro="Huevo"
                                     precio="30" 
@@ -149,7 +152,8 @@ export const TodoApp = () => {
                                     estadoActual = {setestado}
                                     funcDispatch = {dispatch}
                                     poken = {nPoke}
-                                    pokedexset={setnPokedex}/>
+                                    pokedexset={setnPokedex}
+                                    lvlcheck={revisarLvl}/>
                         </SecionTienda>
                         <SecionTienda titulo="Piedras">
                             <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
@@ -195,7 +199,7 @@ async function pokedex(){
 }
 
 
-function revisarLvl(state,setestado){
+export function revisarLvl(state,setestado){
     const expe=state["exp"].toString()
     const realLvl = expe.substring(0, expe.length - 1);
     if(state["lvl"]!==(realLvl)?realLvl:"0"){
@@ -244,7 +248,7 @@ async function revisarPokemon(state,setestado){
 function finDia(tasks,dispatch,setestado){
     const d= new Date()
     const hour= d.getHours()
-    if(hour===16){
+    if(hour===17){
         for (const task of tasks) {
             if(task.done===false){
                 setestado({ type: 'noComplet',

@@ -1,8 +1,8 @@
 import "./Producto.css"
 
-export function Producto({img,nombrePro,precio, datos, estadoActual, funcDispatch, data, poken, pokedexset}){
+export function Producto({img,nombrePro,precio, datos, estadoActual, funcDispatch, data, poken, pokedexset, lvlcheck}){
     return(
-        <div className="producto" onClick={()=>{buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, poken, pokedexset)}}>
+        <div className="producto" onClick={()=>{buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, poken, pokedexset, lvlcheck)}}>
             <img src={img} alt="objeto Tienda"/>
             <p>{nombrePro}</p>
             <div>
@@ -14,7 +14,7 @@ export function Producto({img,nombrePro,precio, datos, estadoActual, funcDispatc
 }
 
 
-function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, poken, pokedexset) {
+function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, poken, pokedexset, lvlcheck) {
     const {oro} = datos[0]
     const condition =  {
         type: nombrePro,
@@ -43,9 +43,13 @@ function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, poken, 
             estadoActual(condition)
             pokedexset(0)
 
-        } else{
+        } else if (nombrePro === 'Poción Exp'){
+            lvlcheck(datos[0], estadoActual)
             estadoActual(condition)
 
+        } else{
+            estadoActual(condition)
+            
         }
     }
 }

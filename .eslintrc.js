@@ -62,6 +62,7 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "no-nested-ternary":"off",
     "radix":"off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",

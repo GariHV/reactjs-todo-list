@@ -55,13 +55,13 @@
     "2": "Sandslash",
     "lvl1": 22
 }, {
-    "1": "Nidoran\u2640",
+    "1": "Nidoran.F",
     "2": "Nidorina",
     "3": "Nidoqueen",
     "lvl1": 16,
     "lvl2": "(use Moon Stone)"
 }, {
-    "1": "Nidoran\u2642",
+    "1": "Nidoran.M",
     "2": "Nidorino",
     "3": "Nidoking",
     "lvl1": 16,
@@ -129,13 +129,13 @@
     "2": "Kadabra",
     "3": "Alakazam",
     "lvl1": 16,
-    "lvl2": "(Trade)"
+    "lvl2": 35
 }, {
     "1": "Machop",
     "2": "Machoke",
     "3": "Machamp",
     "lvl1": 28,
-    "lvl2": "(Trade)"
+    "lvl2": 40
 }, {
     "1": "Bellsprout",
     "2": "Weepinbell",
@@ -151,7 +151,7 @@
     "2": "Graveler",
     "3": "Golem",
     "lvl1": 25,
-    "lvl2": "(Trade)"
+    "lvl2": 37
 },  {
     "1": "Ponyta",
     "2": "Rapidash",
@@ -185,7 +185,7 @@
     "2": "Haunter",
     "3": "Gengar",
     "lvl1": 25,
-    "lvl2": "(Trade)"
+    "lvl2": 35
 }, {
     "1": "Onix"
 }, {
@@ -239,9 +239,7 @@
     "2": "Starmie",
     "lvl1": "(use Water Stone)"
 }, {
-    "1": "Mime Jr.",
-    "2": "Mr. Mime",
-    "lvl1": "(after Mimic learned, outside Galar)"
+    "1": "Mr. Mime"
 }, {
     "1": "Scyther"
 },{

@@ -90,6 +90,12 @@ export const estadoReduce = (state, action) => {
                 } :
                 todo
         });
+        case "lvl":
+            return state.map( todo => {
+                return (todo === todo)
+                ? {...todo,"lvl":action["lvl"]}
+                : todo
+            });
         default:
             return state;
     }

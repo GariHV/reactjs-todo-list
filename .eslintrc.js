@@ -62,6 +62,7 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "no-lone-blocks": "off",
     "react/self-closing-comp":"off",
     "jsx-a11y/heading-has-content":"off",
     "no-nested-ternary":"off",

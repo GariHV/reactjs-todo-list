@@ -1,4 +1,5 @@
 import "./Producto.scss"
+import { ToastContainer, toast } from 'react-toastify';
 
 export function Producto({img,nombrePro,precio, datos, estadoActual, funcDispatch, data, poken, pokedexset, lvlcheck}){
     return(
@@ -22,6 +23,15 @@ function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, poken, 
     }
     if(oro>=precio){
         if(nombrePro ===  'Día descanso'){
+            toast.success('Te lo has ganado 😎', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
             for (const task of data) {
                 if (task.done === false) {
                     estadoActual({
@@ -40,14 +50,41 @@ function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, poken, 
                 }
             }
         }else if(nombrePro === 'Huevo'){
+            toast.success('🥚Vuelta a empezar🥚', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
             estadoActual(condition)
             pokedexset(0)
 
         } else if (nombrePro === 'Poción Exp'){
+            toast.success('Poción comprada! +5🧪', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
             lvlcheck(datos[0], estadoActual)
             estadoActual(condition)
 
         } else{
+            toast.success('Poción comprada! +15❤️', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
             estadoActual(condition)
             
         }

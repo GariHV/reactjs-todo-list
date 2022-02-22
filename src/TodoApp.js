@@ -163,7 +163,7 @@ export const TodoApp = () => {
                         </SecionTienda>
                 </Route>
                 <Route path='/'>
-                <button type='button' onClick={()=>finDia(todos,dispatch,setestado)}>Reinicio</button>
+                <button type='button' onClick={()=>finDia(todos,estado,dispatch,setestado)}>Reinicio</button>
                     <div ref={refId} hidden>0</div>
                     <div className='app'>
                         <div className='generalTodo'>
@@ -241,7 +241,7 @@ async function revisarPokemon(state,setestado){
     }
 
 
-function finDia(tasks,dispatch,setestado){
+function finDia(tasks,estado,dispatch,setestado){
     const d= new Date()
     const hour= d.getHours()
     console.log(hour);
@@ -254,6 +254,10 @@ function finDia(tasks,dispatch,setestado){
                 dispatch({  type: 'toggle',
                             payload: task.id})
             }
+        }
+        if(estado.vida<1){
+            setestado({ type: 'huevo',
+                            payload: estado})
         }
     }
 }

@@ -239,7 +239,7 @@ export function revisarLvl(state,setestado, mostarModalHuevo){
     }
 }
 
-async function revisarPokemon(state,setestado){
+async function revisarPokemon(state,setestado, mostarModalHuevo){
         const nivelPokemon=parseInt(state["lvl"]);
         if(nivelPokemon===1 && state["poke"]==="Huevo"){
             mostarModalHuevo()

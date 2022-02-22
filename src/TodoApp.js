@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer,useState, useRef } from 'react'
 import { Switch, Route } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import Forms from './components/from/Forms';
 import { Task } from './components/task/task';
 import './styles.css'
@@ -13,6 +14,8 @@ import { ShopBackground } from './components/shopBackground/ShopBackground';
 import {Nav} from "./components/nav/nav"
 import { Producto} from "./components/productoTienda/producto"
 import { SecionTienda} from "./components/secionTienda/secionTienda"
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -23,6 +26,7 @@ const init = () =>{
 const init2 = () => {
     return JSON.parse(localStorage.getItem('estado')) || [{"oro":0,"exp":0,"vida":100,"lvl":"0",poke:"Huevo","infoPoke":{}}];
 }
+
 
 
 export const TodoApp = () => {
@@ -111,6 +115,20 @@ export const TodoApp = () => {
             <PokeEspacio datos = {estado} poken={nPoke} pokedexset={setnPokedex}/>
             <Switch>
                 <Route path='/tienda'>
+
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        />
+                        {/* Same as */}
+                    <ToastContainer />
                         <ShopBackground/>
                         <SecionTienda titulo="objetos">
                             <Producto img="1001469812.jpeg"

@@ -9,6 +9,7 @@ export const estadoReduce = (state, action) => {
                 );
 
         case "intermedio-true":
+
             return state.map( todo => 
                 (+todo.oro === +todo.oro)
                 ? {...todo, oro: oro+2, exp:exp+2}

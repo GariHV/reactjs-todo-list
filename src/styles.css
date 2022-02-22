@@ -24,3 +24,8 @@ body{
     flex-direction: column;
     justify-content: flex-start;
 }
+
+.huevo-gif{
+    height: 100%;
+    width: 100%;
+}

@@ -34,7 +34,7 @@ function dif(data, mixChecked) {
     }
 }
 
-export function Task({data, funcDispatch, funcModal, idRef, estadoActual, datos,revisarLvl}){
+export function Task({data, funcDispatch, funcModal, idRef, estadoActual, datos,revisarLvl,huevoModal}){
     const [OptionsV,setOptions]=useState(false)
     const mostrarOptions=()=>{
         // eslint-disable-next-line no-unneeded-ternary
@@ -47,7 +47,7 @@ export function Task({data, funcDispatch, funcModal, idRef, estadoActual, datos,
             payload: datos[0]
         }
         estadoActual(condition)
-        revisarLvl(datos[0],estadoActual)
+        revisarLvl(datos[0],estadoActual,huevoModal)
     }
 
     function handleToggle () {

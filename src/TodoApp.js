@@ -39,7 +39,15 @@ export const TodoApp = () => {
     const [ModalV,setModal]=useState(false)
     const mostarModal=()=>{
         // eslint-disable-next-line no-unneeded-ternary
-        setModal(!ModalV ? true : false )
+        setModal(!ModalV ? true : false)
+    }
+    const [ModalHuevo,setModalHuevo]=useState(false)
+    const mostarModalHuevo=()=>{
+        // eslint-disable-next-line no-unneeded-ternary
+        setModalHuevo(true)
+        setTimeout(() => {
+            setModalHuevo(false)
+        }, 5000);
     }
     const resetearModal =()=>{
         mostarModal()
@@ -59,6 +67,7 @@ export const TodoApp = () => {
             funcDispatch = {dispatch}
             funcModal ={mostarModal}
             idRef = {refId}
+            huevoModal = {mostarModalHuevo}
             />
         ))
         
@@ -202,6 +211,11 @@ export const TodoApp = () => {
                                     />
                             </Modal>
                             :null}
+                        {ModalHuevo ?
+                            <Modal func={mostarModalHuevo}>
+                                <img className='huevo-gif' src='SodH.gif' alt=''></img>
+                            </Modal>
+                            :null}
                     </div>
                 </Route>
             </Switch>
@@ -216,18 +230,19 @@ async function pokedex(){
 }
 
 
-export function revisarLvl(state,setestado){
+export function revisarLvl(state,setestado, mostarModalHuevo){
     const expe=state["exp"].toString()
     const realLvl = expe.substring(0, expe.length - 1);
     if(state["lvl"]!==(realLvl)?realLvl:"0"){
         setestado({ type:"lvl", lvl:realLvl})
-        revisarPokemon(state,setestado)
+        revisarPokemon(state,setestado, mostarModalHuevo)
     }
 }
 
 async function revisarPokemon(state,setestado){
         const nivelPokemon=parseInt(state["lvl"]);
         if(nivelPokemon===1 && state["poke"]==="Huevo"){
+            mostarModalHuevo()
             const npokemon=Math.floor(Math.random() * (67 - 1)) + 1;
             const poked=await pokedex()
             state["infoPoke"]=poked[npokemon]

@@ -24,10 +24,6 @@ const validate = (values) => {
     errors.radio = 'Requerido'
   }
 
-  if(!values.radio) {
-    errors.radio = 'Requerido'
-  }
-
   return errors
 }
 
@@ -90,13 +86,7 @@ function Forms(props) {
           <option value="intermedio" selected>Intermedio</option>
           <option value="dificil">Dificil</option>
         </Select>
-        <Select label="Repetir a" name="radio">
-          <option value="">Seleccione...</option>
-          <option value="Diario">Diario</option>
-          <option value="Semanal">Semanal</option>
-          <option value="mensual">Mensual</option>
-        </Select>
-        <ErrorMessage name="radio" />
+        <ErrorMessage name="chancho" />
         <input type='hidden' name="edit"/>
         <button style={styles.btn} type="submit">Enviar</button>
       </Form>

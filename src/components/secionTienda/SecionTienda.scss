@@ -1,7 +1,13 @@
 
 
 .SecionTienda{
-   margin-left: 20px;
+    margin-left: 20px;
+    .comingsoon{
+        position: absolute !important;
+        left: 2%;
+        top: 80%;
+        height: 40%;
+    }
 }
 
 .SecionTienda>div{

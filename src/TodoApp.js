@@ -15,6 +15,7 @@ import {Nav} from "./components/nav/nav"
 import { Producto} from "./components/productoTienda/producto"
 import { SecionTienda} from "./components/secionTienda/secionTienda"
 import 'react-toastify/dist/ReactToastify.css';
+import { ComingSoon } from './components/ComingSoon/ComingSoon';
 
 
 
@@ -35,7 +36,7 @@ export const TodoApp = () => {
     const [Revisar, SetRevisar] = useState(false)
     const [Revisar1, SetRevisar1] = useState(false)
     const [RevisarV, SetRevisarV] = useState(false)
-    const [todos, dispatch] = useReducer(todoReducer, [],init);
+    const [todos, dispatch] = useReducer(todoReducer, [], init);
 
     const [estado, setestado] = useReducer(estadoReduce, [], init2);
 
@@ -52,6 +53,14 @@ export const TodoApp = () => {
             setModalHuevo(false)
         }, 5000);
     }
+    const [ModalEvolucion,setModalEvolucion]=useState(false)
+    const mostarModalEvolucion=()=>{
+        // eslint-disable-next-line no-unneeded-ternary
+        setModalEvolucion(true)
+        setTimeout(() => {
+            setModalEvolucion(false)
+        }, 3000);
+    }
     const resetearModal =()=>{
         mostarModal()
         refId.current.innerText = 0;
@@ -62,8 +71,8 @@ export const TodoApp = () => {
         })
 
         const to = todos.map( (todo) => (
-            <Task 
-            key={todo.id}
+            <Task key={todo.id}
+            revisarLvl={revisarLvl}
             checkIfChecked={checkIfChecked}
             data = {todo}
             datos = {estado}
@@ -72,41 +81,42 @@ export const TodoApp = () => {
             funcModal ={mostarModal}
             idRef = {refId}
             huevoModal = {mostarModalHuevo}
+            evolucionModal ={setModalEvolucion}
             />
         ))
+        
+        
         // console.log(to)
         return to
     }
 
-    
-    function checkIfChecked (props)  {
-        const condition =  {
-            type: props ,
+    function checkIfChecked(props) {
+        const condition = {
+            type: props,
             payload: estado[0]
         }
         setestado(condition)
         // eslint-disable-next-line no-unneeded-ternary
         SetRevisar(!Revisar ? true : false)
     }
-
-    useEffect( () => {
+    useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
     useEffect( () => {
         localStorage.setItem('estado', JSON.stringify(estado))
     }, [estado]);
-    useEffect(()=>{
-        revisarLvl(estado[0],setestado,mostarModalHuevo)
+    useEffect(() => {
+        revisarLvl(estado[0], setestado)
         // eslint-disable-next-line no-unneeded-ternary
         SetRevisar1(!Revisar1 ? true : false)
     }, [Revisar])
-    useEffect(()=>{
-        revisarPokemon(estado[0],setestado, mostarModalHuevo)
+    useEffect(() => {
+        revisarPokemon(estado[0], setestado, mostarModalHuevo, mostarModalEvolucion)
     }, [Revisar1])
-    useEffect(()=>{
-        muerte(estado,setestado,setnPokedex)
-    }, [RevisarV])
-    const handleSubmit = (e) =>{
+    useEffect(() => {
+            muerte(estado, setestado, setnPokedex)
+        }, [RevisarV]) 
+        const handleSubmit = (e) => {
         const {name, lastname, chancho, radio,edit} = e;
         if(edit===0){  
             const newTodo = {
@@ -207,14 +217,18 @@ export const TodoApp = () => {
                                     lvlcheck={revisarLvl}/>
                         </SecionTienda>
                         <SecionTienda titulo="Piedras">
+                            <Producto img='thunder-stone.png' datos = {estado} estadoActual = {setestado} data = {todos}/>
                             <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
                             <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
                             <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
-                            <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
+                            <ComingSoon />
                         </SecionTienda>
                 </Route>
                 <Route path='/'>
-                <button type='button' onClick={()=>finDia(todos,estado,dispatch,setestado,SetRevisarV,RevisarV)}>Reinicio</button>
+                <button type = 'button'
+                onClick = {
+                    () => finDia(todos, estado, dispatch, setestado, SetRevisarV, RevisarV)
+                } > Reinicio </button>
                     <div ref={refId} hidden>0</div>
                     <div className='app'>
                         <div className='generalTodo'>
@@ -241,6 +255,11 @@ export const TodoApp = () => {
                                 <img className='huevo-gif' src='SodH.gif' alt=''></img>
                             </Modal>
                             :null}
+                        {ModalEvolucion ?
+                            <Modal func={mostarModalEvolucion}>
+                                <img className='huevo-gif' src='evolucion.gif' alt=''></img>
+                            </Modal>
+                            :null}
                     </div>
                 </Route>
             </Switch>
@@ -254,59 +273,73 @@ async function pokedex(){
     return data
 }
 
-
-export function revisarLvl(state,setestado, mostarModalHuevo){
-    const expe=state["exp"].toString()
+export function revisarLvl(state, setestado) {
+    const expe = state["exp"].toString()
     const realLvl = expe.substring(0, expe.length - 1);
-    if(state["lvl"]!==(realLvl)?realLvl:"0"){
-        setestado({ type:"lvl", lvl:realLvl})
-
-        revisarPokemon(state,setestado, mostarModalHuevo)
+    if (state["lvl"] !== (realLvl) ? realLvl : "0") {
+        setestado({
+            type: "lvl",
+            lvl: realLvl
+        })
     }
 }
 
-async function revisarPokemon(state,setestado,mostarModalHuevo){
-        const nivelPokemon=parseInt(state["lvl"]);
-        if(nivelPokemon===1 && state["poke"]==="Huevo"){
-            mostarModalHuevo()
-            const npokemon=Math.floor(Math.random() * (67 - 1)) + 1;
-            const poked=await pokedex()
-            state["infoPoke"]=poked[npokemon]
-            state["poke"]=state["infoPoke"][1]
-            setestado({ type:"Pokemon", estado:state})
-        }
-        else if(nivelPokemon>1){
-            if(state["poke"]===state["infoPoke"]["1"]){
-                if(Object.keys(state["infoPoke"]).length>2){
-                    if(nivelPokemon>=state["infoPoke"]["lvl1"]){
-                        state["poke"]=state["infoPoke"]["2"]
-                        setestado({ type:"Pokemon", estado:state})
-                    }
+async function revisarPokemon(state, setestado, mostarModalHuevo, mostarModalEvolucion) {
+    const nivelPokemon = parseInt(state["lvl"]);
+    if (nivelPokemon === 1 && state["poke"] === "Huevo") {
+        mostarModalHuevo()
+        const npokemon = Math.floor(Math.random() * (67 - 1)) + 1;
+        const poked = await pokedex()
+        state["infoPoke"] = poked[npokemon]
+        state["poke"] = state["infoPoke"][1]
+        setestado({
+            type: "Pokemon",
+            estado: state
+        })
+    } else if (nivelPokemon > 1) {
+        if (state["poke"] === state["infoPoke"]["1"]) {
+            if (Object.keys(state["infoPoke"]).length > 2) {
+                if (nivelPokemon >= state["infoPoke"]["lvl1"]) {
+                    mostarModalEvolucion()
+                    state["poke"] = state["infoPoke"]["2"]
+                    setestado({
+                        type: "Pokemon",
+                        estado: state
+                    })
                 }
             }
-            if(state["poke"]===state["infoPoke"]["2"]){
-                if(Object.keys(state["infoPoke"]).length>4){
-                    if(nivelPokemon>=state["infoPoke"]["lvl2"]){
-                        state["poke"]=state["infoPoke"]["3"]
-                        setestado({ type:"Pokemon", estado:state})
-                    }
+        }
+        if (state["poke"] === state["infoPoke"]["2"]) {
+            if (Object.keys(state["infoPoke"]).length > 4) {
+                if (nivelPokemon >= state["infoPoke"]["lvl2"]) {
+                    mostarModalEvolucion()
+                    state["poke"] = state["infoPoke"]["3"]
+                    setestado({
+                        type: "Pokemon",
+                        estado: state
+                    })
                 }
             }
         }
     }
+}
 
 
-function finDia(tasks,estado,dispatch,setestado,SetRevisarV,RevisarV){
-    const d= new Date()
-    const hour= d.getHours()
-    if(hour===13){
+function finDia(tasks, estado, dispatch, setestado, SetRevisarV, RevisarV) {
+    const d = new Date()
+    const hour = d.getHours()
+    if (hour === 13) {
         for (const task of tasks) {
-            if(task.done===false){
-                setestado({ type: 'noComplet',
-                            payload: ""})
-            }else{
-                dispatch({  type: 'toggle',
-                            payload: task.id})
+            if (task.done === false) {
+                setestado({
+                    type: 'noComplet',
+                    payload: ""
+                })
+            } else {
+                dispatch({
+                    type: 'toggle',
+                    payload: task.id
+                })
             }
         }
         // eslint-disable-next-line no-unneeded-ternary
@@ -314,10 +347,12 @@ function finDia(tasks,estado,dispatch,setestado,SetRevisarV,RevisarV){
     }
 }
 
-function muerte(estado,setestado,setnPokedex){
-    if(estado[0].vida<1){
-        setestado({ type: 'Huevo',
-                    payload: estado})
+function muerte(estado, setestado, setnPokedex) {
+    if (estado[0].vida < 1) {
+        setestado({
+            type: 'Huevo',
+            payload: estado
+        })
         setnPokedex(0)
         toast.error('Tu Pokemon se devilito☠️', {
             position: "top-right",
@@ -328,7 +363,7 @@ function muerte(estado,setestado,setnPokedex){
             draggable: true,
             progress: undefined,
         });
-    }else if(estado[0].vida<15){
+    } else if (estado[0].vida < 15) {
         toast.warn('Estas a punto de morir, vigila', {
             position: "top-right",
             autoClose: 5000,

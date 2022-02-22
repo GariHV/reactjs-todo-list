@@ -34,21 +34,22 @@ function dif(data, mixChecked) {
     }
 }
 
-export function Task({data, funcDispatch, funcModal, idRef, estadoActual, datos,revisarLvl,huevoModal}){
+export function Task({data, funcDispatch, funcModal, idRef, estadoActual, datos,checkIfChecked,huevoModal}){
     const [OptionsV,setOptions]=useState(false)
     const mostrarOptions=()=>{
         // eslint-disable-next-line no-unneeded-ternary
         setOptions(!OptionsV ? true : false )
     }
 
-    function checkIfChecked  ()  {
-        const condition =  {
-            type: `${data.dificultad}-${!data.done}`,
-            payload: datos[0]
-        }
-        estadoActual(condition)
-        revisarLvl(datos[0],estadoActual,huevoModal)
-    }
+    // function checkIfChecked  ()  {
+    //     const condition =  {
+    //         type: `${data.dificultad}-${!data.done}`,
+    //         payload: datos[0]
+    //     }
+    //     estadoActual(condition)
+    //     console.log(datos[0]);
+    //     revisarLvl(datos[0],estadoActual,huevoModal)
+    // }
 
     function handleToggle () {
         funcDispatch({
@@ -58,7 +59,7 @@ export function Task({data, funcDispatch, funcModal, idRef, estadoActual, datos,
     }
     const mixChecked = () => {
         handleToggle();
-        checkIfChecked();
+        checkIfChecked(`${data.dificultad}-${!data.done}`);
     }
 
     return(

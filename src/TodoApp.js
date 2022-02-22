@@ -32,6 +32,9 @@ const init2 = () => {
 export const TodoApp = () => {
     const refId = useRef(null);
     const [nPoke, setnPokedex] = useState(0)
+    const [Revisar, SetRevisar] = useState(false)
+    const [Revisar1, SetRevisar1] = useState(false)
+    const [RevisarV, SetRevisarV] = useState(false)
     const [todos, dispatch] = useReducer(todoReducer, [],init);
 
     const [estado, setestado] = useReducer(estadoReduce, [], init2);
@@ -59,8 +62,9 @@ export const TodoApp = () => {
         })
 
         const to = todos.map( (todo) => (
-            <Task key={todo.id}
-            revisarLvl={revisarLvl}
+            <Task 
+            key={todo.id}
+            checkIfChecked={checkIfChecked}
             data = {todo}
             datos = {estado}
             estadoActual = {setestado}
@@ -70,17 +74,38 @@ export const TodoApp = () => {
             huevoModal = {mostarModalHuevo}
             />
         ))
-        
-        
         // console.log(to)
         return to
     }
+
+    
+    function checkIfChecked (props)  {
+        const condition =  {
+            type: props ,
+            payload: estado[0]
+        }
+        setestado(condition)
+        // eslint-disable-next-line no-unneeded-ternary
+        SetRevisar(!Revisar ? true : false)
+    }
+
     useEffect( () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos]);
     useEffect( () => {
         localStorage.setItem('estado', JSON.stringify(estado))
     }, [estado]);
+    useEffect(()=>{
+        revisarLvl(estado[0],setestado,mostarModalHuevo)
+        // eslint-disable-next-line no-unneeded-ternary
+        SetRevisar1(!Revisar1 ? true : false)
+    }, [Revisar])
+    useEffect(()=>{
+        revisarPokemon(estado[0],setestado, mostarModalHuevo)
+    }, [Revisar1])
+    useEffect(()=>{
+        muerte(estado,setestado,setnPokedex)
+    }, [RevisarV])
     const handleSubmit = (e) =>{
         const {name, lastname, chancho, radio,edit} = e;
         if(edit===0){  
@@ -189,7 +214,7 @@ export const TodoApp = () => {
                         </SecionTienda>
                 </Route>
                 <Route path='/'>
-                <button type='button' onClick={()=>finDia(todos,estado,dispatch,setestado,setnPokedex)}>Reinicio</button>
+                <button type='button' onClick={()=>finDia(todos,estado,dispatch,setestado,SetRevisarV,RevisarV)}>Reinicio</button>
                     <div ref={refId} hidden>0</div>
                     <div className='app'>
                         <div className='generalTodo'>
@@ -235,11 +260,12 @@ export function revisarLvl(state,setestado, mostarModalHuevo){
     const realLvl = expe.substring(0, expe.length - 1);
     if(state["lvl"]!==(realLvl)?realLvl:"0"){
         setestado({ type:"lvl", lvl:realLvl})
+
         revisarPokemon(state,setestado, mostarModalHuevo)
     }
 }
 
-async function revisarPokemon(state,setestado){
+async function revisarPokemon(state,setestado,mostarModalHuevo){
         const nivelPokemon=parseInt(state["lvl"]);
         if(nivelPokemon===1 && state["poke"]==="Huevo"){
             mostarModalHuevo()
@@ -270,10 +296,10 @@ async function revisarPokemon(state,setestado){
     }
 
 
-function finDia(tasks,estado,dispatch,setestado,setnPokedex){
+function finDia(tasks,estado,dispatch,setestado,SetRevisarV,RevisarV){
     const d= new Date()
     const hour= d.getHours()
-    if(hour===10){
+    if(hour===13){
         for (const task of tasks) {
             if(task.done===false){
                 setestado({ type: 'noComplet',
@@ -283,30 +309,34 @@ function finDia(tasks,estado,dispatch,setestado,setnPokedex){
                             payload: task.id})
             }
         }
-        console.log(estado[0].vida<15);
-        if(estado[0].vida<1){
-            setnPokedex(0)
-            setestado({ type: 'Huevo',
-                            payload: estado})
-            toast.error('Tu Pokemon se devilito☠️', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-        }else if(estado[0].vida<15){
-            toast.warn('Estas a punto de morir, vigila', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-        }
+        // eslint-disable-next-line no-unneeded-ternary
+        SetRevisarV(!RevisarV ? true : false)
+    }
+}
+
+function muerte(estado,setestado,setnPokedex){
+    if(estado[0].vida<1){
+        setestado({ type: 'Huevo',
+                    payload: estado})
+        setnPokedex(0)
+        toast.error('Tu Pokemon se devilito☠️', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }else if(estado[0].vida<15){
+        toast.warn('Estas a punto de morir, vigila', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     }
 }

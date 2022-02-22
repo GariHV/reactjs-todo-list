@@ -25,7 +25,7 @@ function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, pokedex
         if(nombrePro ===  'Día descanso'){
             toast.success('Te lo has ganado 😎', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 1000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -52,7 +52,7 @@ function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, pokedex
         }else if(nombrePro === 'Huevo'){
             toast.success('🥚Vuelta a empezar🥚', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -65,7 +65,7 @@ function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, pokedex
         } else if (nombrePro === 'Poción Exp'){
             toast.success('Poción comprada! +5🧪', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -78,7 +78,7 @@ function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, pokedex
         } else{
             toast.success('Poción comprada! +15❤️', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,

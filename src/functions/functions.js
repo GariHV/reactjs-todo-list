@@ -1,4 +1,5 @@
-
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export async function pokedex(){
     const response=await fetch('evolucines.json')
@@ -10,6 +11,15 @@ export function revisarLvl(state, setestado) {
     const expe = state["exp"].toString()
     const realLvl = expe.substring(0, expe.length - 1);
     if (state["lvl"] !== (realLvl) ? realLvl : "0") {
+        toast.info('Tu Pokemon a subido de nivel', {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
         setestado({
             type: "lvl",
             lvl: realLvl

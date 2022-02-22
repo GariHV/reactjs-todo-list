@@ -1,7 +1,7 @@
 // librerias
 import React, { useEffect, useReducer,useState, useRef } from 'react'
 import { Switch, Route } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 
 
 import * as f from "./functions/functions"

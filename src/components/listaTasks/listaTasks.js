@@ -10,7 +10,6 @@ export function ListaTasks({children,titulo, nTask}){
         switch (valor) {
             case 0:
                 return children
-                
             case 1:
                 return children.filter(child => child.props.data.done === false)
             case 2:

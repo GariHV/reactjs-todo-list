@@ -1,9 +1,9 @@
 import "./Producto.scss"
 import { ToastContainer, toast } from 'react-toastify';
 
-export function Producto({img,nombrePro,precio, datos, estadoActual, funcDispatch, data, poken, pokedexset, lvlcheck}){
+export function Producto({img,nombrePro,precio, datos, data,estadoActual, funcDispatch, pokedexset, lvlcheck}){
     return(
-        <div className="producto" onClick={()=>{buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, poken, pokedexset, lvlcheck)}}>
+        <div className="producto" onClick={()=>{buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, pokedexset, lvlcheck)}}>
             <img src={img} alt="objeto Tienda"/>
             <p>{nombrePro}</p>
             <div>
@@ -15,7 +15,7 @@ export function Producto({img,nombrePro,precio, datos, estadoActual, funcDispatc
 }
 
 
-function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, poken, pokedexset, lvlcheck) {
+function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, pokedexset, lvlcheck) {
     const {oro} = datos[0]
     const condition =  {
         type: nombrePro,
@@ -86,7 +86,6 @@ function buy(datos, estadoActual, precio, nombrePro, funcDispatch, data, poken, 
                 progress: undefined,
                 });
             estadoActual(condition)
-            
         }
     }
 }

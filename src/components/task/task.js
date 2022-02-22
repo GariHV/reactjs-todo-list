@@ -2,54 +2,16 @@
 import { useState } from "react"
 import "./task.scss"
 import {Options} from "../Options/options"
+import {dif} from "../../functions/functions"
 
 
-function dif(data, mixChecked) {
-    const {dificultad, done} = data
-    switch(dificultad){
-        case "facil":
-        return (
-        <div className='check' style={{backgroundColor: "green"}}>
-            <input type="checkbox"  onChange={mixChecked} checked={done}/>
-        </div>)
 
-        case "intermedio":
-        return (
-        <div className='check' style={{backgroundColor: "yellow"}}>
-            <input type = "checkbox"
-            onChange = {mixChecked} checked={done}/>
-        </div>)
-
-        case "dificil":
-        return (
-        <div className='check' style={{backgroundColor: "red"}}>
-            <input type="checkbox" onChange = {mixChecked}  checked={done}/>
-        </div>)
-
-        default:
-            return (
-        <div className='check' style={{backgroundColor: "grey"}}>
-            <input type="checkbox"  value={done}/>
-        </div>)
-    }
-}
-
-export function Task({data, funcDispatch, funcModal, idRef, estadoActual, datos,checkIfChecked,huevoModal}){
+export function Task({data, funcDispatch, funcModal, idRef,checkIfChecked}){
     const [OptionsV,setOptions]=useState(false)
     const mostrarOptions=()=>{
         // eslint-disable-next-line no-unneeded-ternary
         setOptions(!OptionsV ? true : false )
     }
-
-    // function checkIfChecked  ()  {
-    //     const condition =  {
-    //         type: `${data.dificultad}-${!data.done}`,
-    //         payload: datos[0]
-    //     }
-    //     estadoActual(condition)
-    //     console.log(datos[0]);
-    //     revisarLvl(datos[0],estadoActual,huevoModal)
-    // }
 
     function handleToggle () {
         funcDispatch({

@@ -5,7 +5,6 @@ import "./pokeSpacio.scss"
 
 export function PokeEspacio({datos, poken, pokedexset}){
     const {exp, vida, lvl, poke,infoPoke} = datos[0]
-    const {lvl1,lvl2}=infoPoke
     nPokedex(poke, pokedexset)
     const expe=exp.toString()
     const expArr=expe.split("")

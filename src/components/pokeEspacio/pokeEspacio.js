@@ -13,7 +13,7 @@ export function PokeEspacio({datos, poken, pokedexset}){
     return (
         <div className="general">
             <div className='pokeInfo'>
-                <h1 className='white-color'>{poke}</h1>
+                <h1 className='white-color'>{poken}</h1>
                 <h2 className = 'white-color' > Lvl: {(lvl === 0) ? "0" : lvl} </h2>
                 <h3 className = 'white-color'></h3>
             </div>
@@ -56,12 +56,14 @@ export function PokeEspacio({datos, poken, pokedexset}){
 
 async function nPokedex(poke,setnPokedex){
     const data= await imgPoke()
-        for (const pokemon of data) {
-            if(pokemon.nombre===poke){
+    for (const pokemon of data) {
+        if(pokemon.nombre===poke){
                 const numero = Number( pokemon["nºPoke"])
                 setnPokedex(numero)
+                return numero
             }
         }
+    setnPokedex(0)
  }
 
 async function imgPoke() {

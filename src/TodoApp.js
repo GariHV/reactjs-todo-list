@@ -37,7 +37,6 @@ export const TodoApp = () => {
     const [Revisar1, SetRevisar1] = useState(false)
     const [RevisarV, SetRevisarV] = useState(false)
     const [todos, dispatch] = useReducer(todoReducer, [], init);
-
     const [estado, setestado] = useReducer(estadoReduce, [], init2);
 
     const [ModalV,setModal]=useState(false)
@@ -328,7 +327,7 @@ async function revisarPokemon(state, setestado, mostarModalHuevo, mostarModalEvo
 function finDia(tasks, estado, dispatch, setestado, SetRevisarV, RevisarV) {
     const d = new Date()
     const hour = d.getHours()
-    if (hour === 13) {
+    if (hour === 14) {
         for (const task of tasks) {
             if (task.done === false) {
                 setestado({
@@ -351,9 +350,9 @@ function muerte(estado, setestado, setnPokedex) {
     if (estado[0].vida < 1) {
         setestado({
             type: 'Huevo',
-            payload: estado
+            payload: estado[0]
         })
-        setnPokedex(0)
+       setnPokedex(0)
         toast.error('Tu Pokemon se devilito☠️', {
             position: "top-right",
             autoClose: 5000,

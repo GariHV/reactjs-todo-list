@@ -5,6 +5,7 @@ import "./pokeSpacio.scss"
 
 export function PokeEspacio({datos, poken, pokedexset}){
     const {exp, vida, lvl, poke,infoPoke} = datos[0]
+    const {lvl1,lvl2} = infoPoke
     nPokedex(poke, pokedexset)
     const expe=exp.toString()
     const expArr=expe.split("")
@@ -13,9 +14,9 @@ export function PokeEspacio({datos, poken, pokedexset}){
     return (
         <div className="general">
             <div className='pokeInfo'>
-                <h1 className='white-color'>{poken}</h1>
+                <h1 className='white-color'>{poke}</h1>
                 <h2 className = 'white-color' > Lvl: {(lvl === 0) ? "0" : lvl} </h2>
-                <h3 className = 'white-color'></h3>
+                <h3 className = 'white-color'>{cuandoEvoluciona(lvl,lvl1,lvl2)}</h3>
             </div>
                 <img src={(poken === 0)? 'pngwing.com.png' : srcImg} alt=''/>
                 <div className="pokeStats">
@@ -27,32 +28,34 @@ export function PokeEspacio({datos, poken, pokedexset}){
         </div>
     )
 }
-// Evoluciona:lvl {(lvl>lvl1)?lvl2:lvl1}
-// function cuandoEvoluciona(lvl,lvl1,lvl2){
-//     console.log(lvl2);
-//     if(lvl2){
-//         if(isNum(lvl2)){
-//             if(lvl>lvl2){
-//                 return "Maxima Evolucion"
-//             }
-//             if(lvl>lvl1){
-//                 return "Evoluciona al lvl:"+lvl2
-//             }
-//             return "Evoluciona al lvl:"+lvl1
+function cuandoEvoluciona(lvl,lvl1,lvl2){
+    if(lvl2){
+        console.log(lvl2);
+        if(!isNaN(lvl2)){
+            if(lvl>=lvl2){
+                return "Maxima Evolucion"
+            }
+            if(lvl>=lvl1){
+                return "Evoluciona al lvl:"+lvl2
+            }
+            return "Evoluciona al lvl:"+lvl1
 
-//         }
-//             if(lvl<lvl1){
-//                 return "Evoluciona al lvl:"+lvl1
-//             }
-//             return "Evoluciona con:" + lvl2
-//     }if(lvl1){
-//         if(lvl<lvl1){
-//             return "Evoluciona al lvl:"+lvl1
-//         }
-//         return "Maxima evolucion"
-//     }
-//     return "No evoluciona"
-// }
+        }
+        if(lvl<=lvl1){
+            return "Evoluciona al lvl:"+lvl1
+        }
+        return "Evoluciona con:" + lvl2
+    }if(lvl1){
+        if(!isNaN(lvl1)){
+            if(lvl<=lvl1){
+                return "Evoluciona al lvl:"+lvl1
+            }
+            return "Maxima evolucion"
+        }
+        return "Evoluciona con:" + lvl1
+    }
+    return "No evoluciona"
+}
 
 async function nPokedex(poke,setnPokedex){
     const data= await imgPoke()

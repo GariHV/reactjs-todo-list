@@ -62,6 +62,7 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "no-restricted-globals":"off",
     "import/no-unresolved": "off",
     "no-lone-blocks": "off",
     "react/self-closing-comp":"off",

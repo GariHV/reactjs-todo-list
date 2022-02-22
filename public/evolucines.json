@@ -239,7 +239,7 @@
     "2": "Starmie",
     "lvl1": "(use Water Stone)"
 }, {
-    "1": "Mr. Mime"
+    "1": "Mr.Mime"
 }, {
     "1": "Scyther"
 },{
@@ -247,14 +247,9 @@
     "2": "Jynx",
     "lvl1": 30
 }, {
-    "1": "Elekid",
-    "2": "Electabuzz",
-    "lvl1": 30
-
+    "1": "Electabuzz"
 }, {
-    "1": "Magby",
-    "2": "Magmar",
-    "lvl1": 30
+    "1": "Magmar"
 }, {
     "1": "Magikarp",
     "2": "Gyarados",

@@ -113,9 +113,6 @@ export const TodoApp = () => {
 
             <Nav datos = {estado} />
             <PokeEspacio datos = {estado} poken={nPoke} pokedexset={setnPokedex}/>
-            <Switch>
-                <Route path='/tienda'>
-
                     <ToastContainer
                         position="top-right"
                         autoClose={5000}
@@ -129,6 +126,8 @@ export const TodoApp = () => {
                         />
                         {/* Same as */}
                     <ToastContainer />
+            <Switch>
+                <Route path='/tienda'>
                         <ShopBackground/>
                         <SecionTienda titulo="objetos">
                             <Producto img="1001469812.jpeg"
@@ -181,7 +180,7 @@ export const TodoApp = () => {
                         </SecionTienda>
                 </Route>
                 <Route path='/'>
-                <button type='button' onClick={()=>finDia(todos,estado,dispatch,setestado)}>Reinicio</button>
+                <button type='button' onClick={()=>finDia(todos,estado,dispatch,setestado,setnPokedex)}>Reinicio</button>
                     <div ref={refId} hidden>0</div>
                     <div className='app'>
                         <div className='generalTodo'>
@@ -221,15 +220,13 @@ export function revisarLvl(state,setestado){
     const expe=state["exp"].toString()
     const realLvl = expe.substring(0, expe.length - 1);
     if(state["lvl"]!==(realLvl)?realLvl:"0"){
-        console.log("es diferente");
         setestado({ type:"lvl", lvl:realLvl})
         revisarPokemon(state,setestado)
     }
 }
 
 async function revisarPokemon(state,setestado){
-        const nivelPokemon=parseInt(state["lvl"])
-        console.log(nivelPokemon);
+        const nivelPokemon=parseInt(state["lvl"]);
         if(nivelPokemon===1 && state["poke"]==="Huevo"){
             const npokemon=Math.floor(Math.random() * (67 - 1)) + 1;
             const poked=await pokedex()
@@ -240,7 +237,6 @@ async function revisarPokemon(state,setestado){
         else if(nivelPokemon>1){
             if(state["poke"]===state["infoPoke"]["1"]){
                 if(Object.keys(state["infoPoke"]).length>2){
-                    console.log(state["infoPoke"]["lvl1"])
                     if(nivelPokemon>=state["infoPoke"]["lvl1"]){
                         state["poke"]=state["infoPoke"]["2"]
                         setestado({ type:"Pokemon", estado:state})
@@ -259,11 +255,10 @@ async function revisarPokemon(state,setestado){
     }
 
 
-function finDia(tasks,estado,dispatch,setestado){
+function finDia(tasks,estado,dispatch,setestado,setnPokedex){
     const d= new Date()
     const hour= d.getHours()
-    console.log(hour);
-    if(hour===9){
+    if(hour===10){
         for (const task of tasks) {
             if(task.done===false){
                 setestado({ type: 'noComplet',
@@ -273,9 +268,30 @@ function finDia(tasks,estado,dispatch,setestado){
                             payload: task.id})
             }
         }
-        if(estado.vida<1){
-            setestado({ type: 'huevo',
+        console.log(estado[0].vida<15);
+        if(estado[0].vida<1){
+            setnPokedex(0)
+            setestado({ type: 'Huevo',
                             payload: estado})
+            toast.error('Tu Pokemon se devilito☠️', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }else if(estado[0].vida<15){
+            toast.warn('Estas a punto de morir, vigila', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }
 }

@@ -15,6 +15,7 @@ import {Nav} from "./components/nav/nav"
 import { Producto} from "./components/productoTienda/producto"
 import { SecionTienda} from "./components/secionTienda/secionTienda"
 import 'react-toastify/dist/ReactToastify.css';
+import { ComingSoon } from './components/ComingSoon/ComingSoon';
 
 
 
@@ -182,10 +183,11 @@ export const TodoApp = () => {
                                     lvlcheck={revisarLvl}/>
                         </SecionTienda>
                         <SecionTienda titulo="Piedras">
+                            <Producto img='thunder-stone.png' datos = {estado} estadoActual = {setestado} data = {todos}/>
                             <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
                             <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
                             <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
-                            <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
+                            < ComingSoon / >
                         </SecionTienda>
                 </Route>
                 <Route path='/'>

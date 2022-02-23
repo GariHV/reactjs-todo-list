@@ -11,8 +11,10 @@
     margin: 10px 15px;
 }
 .producto>img{
-    height: 60px;
-    width: 60px;
+    height: 100%;
+    width: 100%;
+    max-width: 70px;
+    max-height: 70px;
     margin: 10px;
 }
 .producto p{

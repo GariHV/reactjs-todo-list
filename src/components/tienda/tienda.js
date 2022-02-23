@@ -48,10 +48,11 @@ export function Tienda({estado,todos,setestado,dispatch,setnPokedex,revisarLvl})
                     lvlcheck={revisarLvl}/>
         </SecionTienda>
         <SecionTienda titulo="Piedras">
-            <Producto img='thunder-stone.png' datos = {estado} estadoActual = {setestado} data = {todos}/>
-            <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
-            <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
-            <Producto datos = {estado} estadoActual = {setestado} data = {todos}/>
+            <Producto img='Dream_Thunder_Stone_Sprite.png' datos = {estado} estadoActual = {setestado} data = {todos} nombrePro="Piedra Trueno" precio="50"/>
+            <Producto img='Dream_Fire_Stone_Sprite.png' datos = {estado} estadoActual = {setestado} data = {todos} nombrePro="Piedra Fuego" precio="50"/>
+            <Producto img='Dream_Water_Stone_Sprite.png' datos = {estado} estadoActual = {setestado} data = {todos} nombrePro="Piedra Agua" precio="50"/>
+            <Producto img='Dream_Leaf_Stone_Sprite.png' datos = {estado} estadoActual = {setestado} data = {todos} nombrePro="Piedra Hoja" precio="50"/>
+            <Producto img='Dream_Moon_Stone_Sprite.png.png' datos = {estado} estadoActual = {setestado} data = {todos} nombrePro="Piedra Luna" precio="50"/>
             <ComingSoon />
         </SecionTienda>
     </>

@@ -67,11 +67,58 @@ export async function revisarPokemon(state, setestado, mostarModalHuevo, mostarM
     }
 }
 
+export async function imgPoke() {
+    const response=await fetch('pokemons.json')
+    const data = await response.json()
+    return data
+}
+
+export async function nPokedex(poke,setnPokedex){
+    const data= await imgPoke()
+    for (const pokemon of data) {
+        if(pokemon.nombre===poke){
+                const numero = Number( pokemon["nºPoke"])
+                setnPokedex(numero)
+                return numero
+            }
+        }
+    setnPokedex(0)
+}
+
+export function cuandoEvoluciona(lvl,lvl1,lvl2){
+    if(lvl2){
+        console.log(lvl2);
+        if(!isNaN(lvl2)){
+            if(lvl>=lvl2){
+                return "Maxima Evolucion"
+            }
+            if(lvl>=lvl1){
+                return "Evoluciona al lvl:"+lvl2
+            }
+            return "Evoluciona al lvl:"+lvl1
+
+        }
+        if(lvl<=lvl1){
+            return "Evoluciona al lvl:"+lvl1
+        }
+        return "Evoluciona con:" + lvl2
+    }if(lvl1){
+        if(!isNaN(lvl1)){
+            if(lvl<=lvl1){
+                return "Evoluciona al lvl:"+lvl1
+            }
+            return "Maxima evolucion"
+        }
+        return "Evoluciona con:" + lvl1
+    }
+    return "No evoluciona"
+}
+
 
 export function finDia(tasks, estado, dispatch, setestado, SetRevisarV, RevisarV) {
     const d = new Date()
     const hour = d.getHours()
-    if (hour === 17) {
+    if (hour === 0) {
         for (const task of tasks) {
             if (task.done === false) {
                 setestado({
@@ -149,49 +196,5 @@ export function dif(data, mixChecked) {
     }
 }
 
-export function cuandoEvoluciona(lvl,lvl1,lvl2){
-    if(lvl2){
-        console.log(lvl2);
-        if(!isNaN(lvl2)){
-            if(lvl>=lvl2){
-                return "Maxima Evolucion"
-            }
-            if(lvl>=lvl1){
-                return "Evoluciona al lvl:"+lvl2
-            }
-            return "Evoluciona al lvl:"+lvl1
 
-        }
-        if(lvl<=lvl1){
-            return "Evoluciona al lvl:"+lvl1
-        }
-        return "Evoluciona con:" + lvl2
-    }if(lvl1){
-        if(!isNaN(lvl1)){
-            if(lvl<=lvl1){
-                return "Evoluciona al lvl:"+lvl1
-            }
-            return "Maxima evolucion"
-        }
-        return "Evoluciona con:" + lvl1
-    }
-    return "No evoluciona"
-}
 
-export async function nPokedex(poke,setnPokedex){
-    const data= await imgPoke()
-    for (const pokemon of data) {
-        if(pokemon.nombre===poke){
-                const numero = Number( pokemon["nºPoke"])
-                setnPokedex(numero)
-                return numero
-            }
-        }
-    setnPokedex(0)
-}
-
-export async function imgPoke() {
-    const response=await fetch('pokemons.json')
-    const data = await response.json()
-    return data
-}

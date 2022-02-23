@@ -71,7 +71,7 @@ export async function revisarPokemon(state, setestado, mostarModalHuevo, mostarM
 export function finDia(tasks, estado, dispatch, setestado, SetRevisarV, RevisarV) {
     const d = new Date()
     const hour = d.getHours()
-    if (hour === 17) {
+    if (hour === 19) {
         for (const task of tasks) {
             if (task.done === false) {
                 setestado({
